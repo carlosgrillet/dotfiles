@@ -9,6 +9,9 @@ oh-my-posh --init --shell pwsh --config C:\Users\Carlos\.config\powershell\carlo
 # ALIAS
 Set-Alias vim nvim
 Set-Alias g git
+Set-Alias ga 'git add'
+Set-Alias gc 'git commit -m'
+Set-Alias gp 'git push -u origin master'
 Set-Alias ll ls
 Set-Alias la 'ls -Hidden'
 Set-Alias grep findstr
