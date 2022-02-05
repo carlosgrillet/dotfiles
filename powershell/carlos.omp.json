@@ -26,7 +26,10 @@
 					"foreground": "#FFFFFF",
 					"background": "#0077C2",
 					"properties": {
-						"template": "\uf120 {{ .Name }} "
+						"mapped_shell_names": {
+      				"pwsh": "\uf120 pwsh",
+      				"cmd": "\uf120 batch"
+    				}
 					}
 				},
 				{
@@ -36,8 +39,9 @@
 					"foreground": "#E4E4E4",
 					"background": "#444444",
 					"properties": {
-						"style": "full",
-						"enable_hyperlink": true
+						"style": "agnoster_short",
+						"enable_hyperlink": true,
+						"template": "{{ .Path }}"
 					}
 				},
 				{
