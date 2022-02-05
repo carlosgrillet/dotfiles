@@ -14,44 +14,31 @@
 					"trailing_diamond": "\ue0b4",
 					"foreground": "#011627",
 					"background": "#00CCFF",
-          			"properties": {
-            			"template": "{{ .UserName }}"
-          			}
+          "properties": {
+          	"template": "\uf17a {{ .UserName }}"
+          }
 				},
 				{
 					"type": "shell",
 					"style": "diamond",
 					"leading_diamond": "\ue0b6",
-					"trailing_diamond": "",
+					"trailing_diamond": "\ue0b0<transparent>hola</>",
 					"foreground": "#FFFFFF",
 					"background": "#0077C2",
-					"properties": {}
-
-				},
-				{
-					"type": "root",
-					"style": "diamond",
-					"leading_diamond": "",
-					"trailing_diamond": "",
-					"foreground": "#FFFB38",
-					"background": "#EF5350",
 					"properties": {
-						"root_icon": "\uf292",
-						"prefix": "<parentBackground>\ue0b0</> "
+						"template": "\uf120 {{ .Name }} "
 					}
-
 				},
 				{
 					"type": "path",
 					"style": "powerline",
-					"powerline_symbol": "\ue0b0 ",
+					"powerline_symbol": "\ue0b0",
 					"foreground": "#E4E4E4",
 					"background": "#444444",
 					"properties": {
 						"style": "full",
 						"enable_hyperlink": true
 					}
-
 				},
 				{
 					"type": "git",
