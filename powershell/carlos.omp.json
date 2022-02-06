@@ -88,6 +88,7 @@
 				{
 					"type": "exit",
 					"style": "plain",
+					"foreground": "#FFFFFF",
 					"properties": {
 						"prefix": "\uf054",
 						"display_exit_code": false,
