@@ -80,7 +80,19 @@
 					"type": "text",
 					"style": "plain",
 					"properties": {
-						"template": "\uf054"
+						"prefix": "",
+						"postfix": "",
+						"text": ""
+					}
+				},
+				{
+					"type": "exit",
+					"style": "plain",
+					"properties": {
+						"prefix": "\uf054",
+						"display_exit_code": false,
+						"always_enabled": true,
+						"error_color": "#ef5350"
 					}
 				}
 			]
