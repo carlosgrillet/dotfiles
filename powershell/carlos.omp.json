@@ -74,7 +74,21 @@
 						"template": "{{ .HEAD }} {{ if .Working.Changed }}\uf01e {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }}<#e4e4e4> \uf053\uf054 </>{{ end }}{{ if .Staging.Changed }}\uf00c {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }}"
 					}
 				}
-			]	
+			]
+		},
+		{
+			"type": "prompt",
+			"alignment": "left",
+			"newline": true,
+			"segments": [
+				{
+					"type": "text",
+					"style": "plain",
+					"properties": {
+						"template": "\uf054"
+					}
+				}
+			]
 		}
 	]
 }
