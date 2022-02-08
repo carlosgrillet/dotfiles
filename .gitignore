@@ -6,6 +6,7 @@
 .gitconfig
 .old/
 .local/
+.config/matplotlib/
 .profile
 .ssh/
 .sudo_as_admin_successful
