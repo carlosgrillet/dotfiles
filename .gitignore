@@ -3,8 +3,6 @@
 .bash_logout
 .cache/
 .lnav/
-.gitconfig
-.git-credentials
 .old/
 .local/
 .config/matplotlib/
