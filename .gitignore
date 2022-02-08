@@ -3,6 +3,7 @@
 .bash_logout
 .cache/
 .lnav/
+.gitconfig
 .old/
 .local/
 .profile
