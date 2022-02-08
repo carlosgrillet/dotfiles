@@ -32,3 +32,4 @@ prov_old/
 pruebas
 snap/
 soporte-telegram/
+smtp.py
