@@ -10,6 +10,9 @@ oh-my-posh --init --shell pwsh --config C:\Users\Carlos\.config\powershell\carlo
 Import-Module -Name Terminal-Icons
 
 # ALIAS
+#function nvimcfg {nvim -u $HOME\.config\nvim\init.vim -}
+#Set-Alias vim nvimcfg
+
 Set-Alias vim nvim
 Set-Alias g git
 Set-Alias ll ls
