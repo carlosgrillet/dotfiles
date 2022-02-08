@@ -13,7 +13,7 @@ set nohlsearch              " highlight search
 set incsearch               " incremental search
 set tabstop=2               " number of columns occupied by a tab 
 set shiftwidth=2               
-set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
+set softtabstop=2           " see multiple spaces as tabstops so <BS> does the right thing
 "set backupdir=~/.cache/vim  " Directory to store backup files.
 set expandtab               " converts tabs to white space
 set shiftwidth=4            " width for autoindents
