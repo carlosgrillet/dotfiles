@@ -5,6 +5,8 @@
 .lnav/
 .old/
 .local/
+.gitconfig
+.git-credentials
 .config/matplotlib/
 .profile
 .ssh/
