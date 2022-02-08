@@ -5,8 +5,6 @@
 .lnav/
 .old/
 .local/
-.gitconfig
-.git-credentials
 .config/matplotlib/
 .profile
 .ssh/
@@ -32,6 +30,5 @@ prov_full/
 prov_old.py
 prov_old/
 pruebas
-smtp.py
 snap/
 soporte-telegram/
