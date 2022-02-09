@@ -1,15 +1,24 @@
 set nocompatible            " disable compatibility to old-time vi
 set path+=**
+" stop usin arrows bro
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
+" improve movement in split windows
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+" some remaps for searching
 nnoremap <c-h> :set hlsearch!<cr>
+nnoremap <CR> :nohlsearch<cr>
 set cursorline
 set showmatch               " show matching 
 set ignorecase              " case insensitive 
+set smartcase
 set mouse=v                 " middle-click paste with 
-set nohlsearch                " highlight search 
+" set nohlsearch                " highlight search 
 set incsearch               " incremental search
 set tabstop=4               " number of columns occupied by a tab 
 set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
