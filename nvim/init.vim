@@ -12,7 +12,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 " some remaps for searching
 nnoremap <c-h> <cmd>set hlsearch!<cr>
-" nnoremap <CR> <cmd>nohlsearch<cr>
+"  nnoremap <CR> <cmd>nohlsearch<cr>
 set cursorline
 set showmatch               " show matching 
 set ignorecase              " case insensitive 
