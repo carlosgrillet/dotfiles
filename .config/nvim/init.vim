@@ -16,6 +16,12 @@ inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
 "Turn on/off highlight in search
 nnoremap <c-h> <cmd>set hlsearch!<CR>
+" Manage split
+set splitbelow splitright
+noremap <silent> <C-Up> <cmd>resize +3<CR>
+noremap <silent> <C-Down> <cmd>resize -3<CR>
+noremap <silent> <C-Left> <cmd>vertical resize +3<CR>
+noremap <silent> <C-Right> <cmd>vertical resize -3<CR>
 " init autocmd
 autocmd!
 " set script encoding
