@@ -5,8 +5,17 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
+" auto complete ( [ { < " '
+inoremap ( ()<Esc>i
+inoremap { {}<Esc>i
+inoremap {<CR> {<CR>}<Esc>O
+inoremap [ []<Esc>i
+inoremap [<CR> [<CR>]<Esc>0
+inoremap < <><Esc>i
+inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
 "Turn on/off highlight in search
-nnoremap <c-h> :set hlsearch!<cr>
+nnoremap <c-h> <cmd>set hlsearch!<CR>
 " init autocmd
 autocmd!
 " set script encoding
@@ -51,12 +60,12 @@ set lazyredraw
 set ignorecase
 " Be smart when using tabs ;)
 set smarttab
+set ai "Auto indent
+set si "Smart indent
 " indents
 filetype plugin indent on
 set shiftwidth=2
 set tabstop=2
-set ai "Auto indent
-set si "Smart indent
 set nowrap "No Wrap lines
 set backspace=start,eol,indent
 " Finding files - Search down into subfolders
