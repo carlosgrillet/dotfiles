@@ -15,7 +15,6 @@ inoremap < <><Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
 " Find files using Telescope command-line sugar.
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 nnoremap <leader>ff :Telescope find_files<CR>
 nnoremap <leader>fg :Telescope live_grep<CR>
 nnoremap <leader>fb :Telescope buffers<CR>
@@ -26,7 +25,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 " Test commands
+"au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 nnoremap <silent> <leader>tt :new<CR>:terminal<CR>
+" Run debung command for python
+nnoremap <silent> <leader>pr :! python3 %<CR>
 " Some remaps for searching
 nnoremap f <M-/>
 nnoremap  <leader>hh :set hlsearch!<CR>
