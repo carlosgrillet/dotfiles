@@ -14,14 +14,28 @@ inoremap [<CR> [<CR>]<Esc>0
 inoremap < <><Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
-"Turn on/off highlight in search
-nnoremap <c-h> <cmd>set hlsearch!<CR>
+" Find files using Telescope command-line sugar.
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+nnoremap <leader>ff :Telescope find_files<CR>
+nnoremap <leader>fg :Telescope live_grep<CR>
+nnoremap <leader>fb :Telescope buffers<CR>
+nnoremap <leader>fh :Telescope help_tags<CR>
+" improve movement in split windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+" Test commands
+nnoremap <silent> <leader>tt :new<CR>:terminal<CR>
+" Some remaps for searching
+nnoremap f <M-/>
+nnoremap  <leader>hh :set hlsearch!<CR>
 " Manage split
 set splitbelow splitright
-noremap <silent> <C-Up> <cmd>resize +3<CR>
-noremap <silent> <C-Down> <cmd>resize -3<CR>
-noremap <silent> <C-Left> <cmd>vertical resize +3<CR>
-noremap <silent> <C-Right> <cmd>vertical resize -3<CR>
+noremap <silent> <C-Up> :resize +3<CR>
+noremap <silent> <C-Down> :resize -3<CR>
+noremap <silent> <C-Left> :vertical resize +3<CR>
+noremap <silent> <C-Right> :vertical resize -3<CR>
 " init autocmd
 autocmd!
 " set script encoding
@@ -35,6 +49,7 @@ syntax enable
 set fileencodings=utf-8,sjis,euc-jp,latin
 set encoding=utf-8
 set title
+set textwidth=80
 set autoindent
 set background=dark
 set nobackup
@@ -45,7 +60,7 @@ set laststatus=2
 set scrolloff=10
 set expandtab
 "let loaded_matchparen = 1
-set shell=fish
+set shell=bash
 set backupskip=/tmp/*,/private/tmp/*
 
 " incremental substitution (neovim)
@@ -90,6 +105,7 @@ set formatoptions+=r
 " ---------------------------------------------------------------------
 set cursorline
 "set cursorcolumn
+set colorcolumn=80 
 
 " Set cursor line color on visual mode
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
@@ -163,6 +179,11 @@ if exists("&termguicolors") && exists("&winblend")
   let g:neosolarized_termtrans=1
   runtime ./colors/NeoSolarized.vim
   colorscheme NeoSolarized
+  " Use One
+  "let g:airline_theme='one'
+  "colorscheme one
+  "set background=dark " for the dark version
+  " set background=light " for the light version
 endif
 
 "}}}
@@ -172,4 +193,14 @@ endif
 set exrc
 "}}}
 
+" Plugins Management " {{{
+" ---------------------------------------------------------------------
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+
+" Declare the list of plugins.
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+call plug#end()
+" }}}
 " vim: set foldmethod=marker foldlevel=0:
