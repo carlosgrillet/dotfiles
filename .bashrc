@@ -93,6 +93,8 @@ alias g='git'
 alias ll='ls -alF'
 alias la='ls -lA'
 alias vim='nvim'
+alias ifs='speedometer -l  -r ens160 -t ens160 -m $(( 1024 * 1024 * 3 / 2 ))'
+alias sai='sudo apt install'
 alias py3='python3'
 
 # Add an "alert" alias for long running commands.  Use like so:
