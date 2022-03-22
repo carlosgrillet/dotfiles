@@ -179,6 +179,7 @@ if exists("&termguicolors") && exists("&winblend")
   set background=dark
   " Use NeoSolarized
   let g:neosolarized_termtrans=1
+  let g:python_highlight_all = 1
   runtime ./colors/NeoSolarized.vim
   colorscheme NeoSolarized
   " Use One
@@ -202,6 +203,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'vim-python/python-syntax'
 
 call plug#end()
 " }}}
