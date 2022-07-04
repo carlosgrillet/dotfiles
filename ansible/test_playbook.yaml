@@ -1,0 +1,10 @@
+---
+  - name: Check sudo permission with APT UPDATE
+    hosts: acarigua,anaco,barcelona,barinas,barquisimeto 
+    become: true
+    become_method: sudo
+    become_user: "{{ hostvars.ansible_user }}"
+    tasks:
+      - name: Run ping to google
+        command:
+          cmd: "apt update"

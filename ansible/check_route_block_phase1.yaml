@@ -1,0 +1,12 @@
+---
+  - name: Route Block Phase 1
+    hosts: acarigua:anaco:barcelona:barinas:barquisimeto
+    become: true
+    become_method: sudo
+    become_user: '{{ hostvars.ansible_user }}'
+    tasks:
+      - name: Verify the routes
+        shell: "ip route show | egrep 'blackhole'" 
+        register: command_output
+      - debug:
+          var: command_output.stdout_lines
