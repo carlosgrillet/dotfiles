@@ -40,6 +40,9 @@ noremap <silent> <C-Left> :vertical resize +3<CR>
 noremap <silent> <C-Right> :vertical resize -3<CR>
 " init autocmd
 autocmd!
+" file undo
+set undofile
+set undodir=~/.vim/undo
 " set script encoding
 scriptencoding utf-8
 " stop loading config if it's on tiny or small
