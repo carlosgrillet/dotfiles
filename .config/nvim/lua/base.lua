@@ -6,6 +6,9 @@ vim.opt.fileencoding = 'utf-8'
 
 vim.wo.number = true
 
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.cursorline = true
 vim.opt.title = true
 vim.opt.undofile = true
 vim.opt.undodir = '~/.vim/undo'
