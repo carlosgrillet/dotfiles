@@ -5,18 +5,15 @@ vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
 
 vim.wo.number = true
-<<<<<<< HEAD
 vim.wo.relativenumbner = true
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-=======
 vim.wo.relativenumber = true
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.cursorline = true
->>>>>>> 36c5dd019d4df59fa76db62ebfcb9102846cd1d1
 vim.opt.title = true
 vim.opt.undofile = true
 vim.opt.undodir = '~/.vim/undo'
