@@ -94,7 +94,7 @@ fi
 
 # some more ls aliases
 alias l='ls -CF'
-alias g='git'
+alias g='git remote update &>/dev/null && git status'
 alias ll='ls -AlFh'
 alias la='ls -lAh'
 alias vim='nvim'
