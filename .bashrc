@@ -95,8 +95,8 @@ fi
 # some more ls aliases
 alias l='ls -CF'
 alias g='git'
-alias ll='ls -alF'
-alias la='ls -lA'
+alias ll='ls -AlFh'
+alias la='ls -lAh'
 alias vim='nvim'
 alias ifs='speedometer -l  -r ens160 -t ens160 -m $(( 1024 * 1024 * 3 / 2 ))'
 alias sai='sudo apt install'
