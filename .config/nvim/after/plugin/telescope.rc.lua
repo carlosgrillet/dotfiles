@@ -50,7 +50,7 @@ vim.keymap.set('n', ';f',
     })
   end)
 vim.keymap.set('n', ';r', function()
-  builtin.live_grep()
+  builtin.live_grep() -- Ensure ripgrep binary is installed in your system
 end)
 vim.keymap.set('n', '\\\\', function()
   builtin.buffers()
