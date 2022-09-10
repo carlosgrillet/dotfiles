@@ -16,6 +16,8 @@ ts.setup {
     "yaml",
     "css",
     "html",
+    "javascript",
+    "typescript",
     "lua",
     "c"
   },
