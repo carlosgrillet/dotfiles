@@ -11,15 +11,15 @@ ts.setup {
     disable = {},
   },
   ensure_installed = {
-    "python",
-    "json",
-    "yaml",
-    "css",
-    "html",
-    "javascript",
-    "typescript",
-    "lua",
-    "c"
+    'python',
+    'json',
+    'yaml',
+    'css',
+    'html',
+    'javascript',
+    'tsx',
+    'lua',
+    'c'
   },
   autotag = {
     enable = true,
