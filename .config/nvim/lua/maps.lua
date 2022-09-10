@@ -16,10 +16,10 @@ keymap.set('n', '<C-a>', 'gg<S-v>G')
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 
 -- New tab
-keymap.set('n', 'te', ':tabedit')
+keymap.set('n', 'te', ':tabedit', { silent = true})
 -- Split window
-keymap.set('n', 'ss', ':split<Return><C-w>w')
-keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
+keymap.set('n', 'ss', ':split<Return><C-w>w', { silent = true })
+keymap.set('n', 'sv', ':vsplit<Return><C-w>w', { silent = true })
 -- Move window
 keymap.set('n', '<Space>', '<C-w>w')
 keymap.set('', 'sh', '<C-w>h')
