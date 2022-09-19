@@ -53,7 +53,9 @@ vim.keymap.set('n', ';r', function()
   builtin.live_grep() -- Ensure ripgrep binary is installed in your system
 end)
 vim.keymap.set('n', '\\\\', function()
-  builtin.buffers()
+  builtin.buffers({
+    initial_mode = "normal"
+  })
 end)
 vim.keymap.set('n', ';t', function()
   builtin.help_tags()

@@ -4,6 +4,7 @@ if (not status) then return end
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 
 null_ls.setup {
+  -- install eslint_d with `sudo npm install -g eslint_d`
   sources = {
     null_ls.builtins.diagnostics.eslint_d.with({
       diagnostics_format = '[eslint] #{m}\n(#{c})'
