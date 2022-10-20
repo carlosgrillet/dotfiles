@@ -10,6 +10,7 @@ ts.setup {
     enable = true,
     disable = {},
   },
+  -- to avoid errors run sudo apt install g++
   ensure_installed = {
     'python',
     'json',
