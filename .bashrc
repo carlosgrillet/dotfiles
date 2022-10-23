@@ -95,9 +95,9 @@ fi
 
 # some more ls aliases
 alias l='ls -CF'
-alias g='git remote update &>/dev/null && git status'
 alias ll='ls -AlFh'
 alias la='ls -lAh'
+alias g='git remote update &>/dev/null && git status'
 alias vim='nvim'
 alias ifs='speedometer -l  -r ens160 -t ens160 -m $(( 1024 * 1024 * 3 / 2 ))'
 alias sai='sudo apt install'
@@ -106,6 +106,13 @@ alias ff='fzf'
 alias ansibleconfig='sudo nvim /etc/ansible/ansible.cfg'
 alias ansiblehosts='sudo nvim /etc/ansible/hosts'
 alias tmux='tmux -u'
+
+if [ -x "$(which exa)" ]; then
+  alias ls='exa -l'
+  alias la='exa -abghl'
+  alias lt='exa -TL 2'
+  alias ltf='exa -lTL 2'
+fi
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
