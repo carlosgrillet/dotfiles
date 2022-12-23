@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/operip/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-vsnip"] = {
+    loaded = true,
+    path = "/home/operip/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
+    url = "https://github.com/hrsh7th/cmp-vsnip"
+  },
   ["colorbuddy.nvim"] = {
     loaded = true,
     path = "/home/operip/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
@@ -218,11 +223,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/operip/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
-  },
-  ["zen-mode.nvim"] = {
-    loaded = true,
-    path = "/home/operip/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
-    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 

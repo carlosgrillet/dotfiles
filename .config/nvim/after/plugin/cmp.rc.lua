@@ -5,7 +5,7 @@ local lspkind = require 'lspkind'
 cmp.setup({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      vim.fn["vsnip#anonymous"](args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({
@@ -20,7 +20,8 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = 'vsnip' },
+  }, {
     { name = 'buffer' },
   }),
   formatting = {
@@ -32,7 +33,3 @@ vim.cmd [[
   set completeopt=menuone,noinsert,noselect
   highlight! default link CmpItemKind CmpItemMenuDefault
 ]]
-
--- " Use <Tab> and <S-Tab> to navigate through popup menu
--- inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
--- inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
