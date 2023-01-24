@@ -1,6 +1,7 @@
 --vim.lsp.set_log_level("debug")
 
 local status, nvim_lsp = pcall(require, "lspconfig")
+local util = require("lspconfig/util")
 if (not status) then return end
 
 local protocol = require('vim.lsp.protocol')
@@ -49,7 +50,7 @@ protocol.CompletionItemKind = {
   '', -- Constant
   '', -- Struct
   '', -- Event
-  'ﬦ', -- Operator
+'ﬦ', -- Operator
   '', -- TypeParameter
 }
 
@@ -94,6 +95,25 @@ nvim_lsp.sumneko_lua.setup {
 
 nvim_lsp.pyright.setup {
   on_attach = on_attach,
+  cmd = { "pyright-langserver", "--stdio"},
+  filetypes = { "python" },
+  root_dir = function(fname)
+    return util.root_pattern(
+      ".git",
+      "setup.py",
+      "manage.py",
+      "setup.cfg",
+      "requirements.txt")(fname) or util.path.dirname(fname)
+    end,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "workspace",
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
 }
 nvim_lsp.tailwindcss.setup {}
 
