@@ -43,3 +43,5 @@ keymap.set('v', '<Leader>y', '"+y')
 keymap.set('n', '<Leader>Y', '"+Y')
 -- Paste from clipboard
 keymap.set('n', '<Leader>p', '"+gP')
+-- Exit but don't save nothing
+keymap.set('n', 'ZZ', '<Cmd>q!<CR>')
