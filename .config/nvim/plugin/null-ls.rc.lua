@@ -7,7 +7,7 @@ null_ls.setup {
   -- install eslint_d with `sudo npm install -g eslint_d`
   sources = {
     null_ls.builtins.diagnostics.eslint_d.with({
-      diagnostics_format = '[eslint] #{m}\n(#{c})'
+      diagnostics_format = '● #{m}\n(#{c})'
     }),
     null_ls.builtins.diagnostics.fish
   },

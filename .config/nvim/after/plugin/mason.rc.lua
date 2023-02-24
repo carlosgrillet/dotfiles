@@ -7,7 +7,7 @@ mason.setup({})
 
 lspconfig.setup {
   ensure_installed = {
-    "luau_lsp",
+    "lua_ls",
     "tailwindcss",
     "pyright",
   },

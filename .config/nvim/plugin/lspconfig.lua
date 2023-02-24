@@ -70,13 +70,24 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities
 }
 
+nvim_lsp.lua_ls.setup {
+  on_attach = on_attach,
+}
+
 nvim_lsp.sourcekit.setup {
   on_attach = on_attach,
 }
 
-nvim_lsp.luau_lsp.setup {}
+nvim_lsp.tailwindcss.setup {
+  on_attach = on_attach,
+  root_dir = function(fname)
+    return vim.loop.cwd()
+  end,
+}
 
-nvim_lsp.tailwindcss.setup {}
+nvim_lsp.pyright.setup {
+  on_attach = on_attach,
+}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -85,10 +96,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   virtual_text = { spacing = 4, prefix = "●" },
   severity_sort = true,
 })
-
-nvim_lsp.pyright.setup {
-  on_attach = on_attach,
-}
 
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
