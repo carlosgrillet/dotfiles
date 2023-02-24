@@ -9,6 +9,7 @@ lspconfig.setup {
   ensure_installed = {
     "lua_ls",
     "tailwindcss",
+    "tsserver",
     "pyright",
   },
 }

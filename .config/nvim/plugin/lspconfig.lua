@@ -65,9 +65,12 @@ nvim_lsp.flow.setup {
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
+  filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = {"typescript-language-server", "--stdio"},
+  capabilities = capabilities,
+  root_dir = function(fname)
+    return vim.loop.cwd()
+  end,
 }
 
 nvim_lsp.lua_ls.setup {
