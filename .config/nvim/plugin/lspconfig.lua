@@ -65,12 +65,10 @@ nvim_lsp.flow.setup {
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = {"typescript-language-server", "--stdio"},
   capabilities = capabilities,
-  root_dir = function(fname)
-    return vim.loop.cwd()
-  end,
+  -- filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+  -- cmd = {"typescript-language-server", "--stdio"},
+  -- root_dir = vim.loop.cwd,
 }
 
 nvim_lsp.lua_ls.setup {
@@ -83,9 +81,7 @@ nvim_lsp.sourcekit.setup {
 
 nvim_lsp.tailwindcss.setup {
   on_attach = on_attach,
-  root_dir = function(fname)
-    return vim.loop.cwd()
-  end,
+  root_dir = vim.loop.cwd,
 }
 
 nvim_lsp.pyright.setup {
