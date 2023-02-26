@@ -79,9 +79,8 @@ nvim_lsp.sourcekit.setup {
   on_attach = on_attach,
 }
 
-nvim_lsp.tailwindcss.setup {
+nvim_lsp.cssls.setup {
   on_attach = on_attach,
-  root_dir = vim.loop.cwd,
 }
 
 nvim_lsp.pyright.setup {
