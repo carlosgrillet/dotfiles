@@ -3,11 +3,11 @@ local keymap = vim.keymap
 keymap.set('n', 'x', '"_x')
 
 -- Increment/decrement
-keymap.set('n', '+', '<C-a>')
-keymap.set('n', '-', '<C-x>')
+--keymap.set('n', '+', '<C-a>')
+--keymap.set('n', '-', '<C-x>')
 
 -- Select all
-keymap.set('n', '<C-a>', 'gg<S-v>G')
+--keymap.set('n', '<C-a>', 'gg<S-v>G')
 -- New tab
 keymap.set('n', 'te', ':tabedit', { silent = true})
 -- Split window
