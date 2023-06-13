@@ -2,18 +2,15 @@ local keymap = vim.keymap.set
 
 keymap('n', 'x', '"_x')
 -- Increment/decrement
-<<<<<<< HEAD
---keymap.set('n', '+', '<C-a>')
---keymap.set('n', '-', '<C-x>')
+--keymap('n', '+', '<C-a>')
+--keymap('n', '-', '<C-x>')
 
 -- Select all
 --keymap.set('n', '<C-a>', 'gg<S-v>G')
-=======
 keymap('n', '+', '<C-a>')
 keymap('n', '-', '<C-x>')
 -- Select all
 keymap('n', '<C-a>', 'gg<S-v>G')
->>>>>>> 297ef2862d02a97e12a51cb469b30aa57ef53e71
 -- New tab
 keymap('n', 'te', ':tabedit', { silent = true})
 -- Split window
@@ -48,12 +45,9 @@ keymap('n', '<Leader>y', '"+y')
 keymap('v', '<Leader>y', '"+y')
 keymap('n', '<Leader>Y', '"+Y')
 -- Paste from clipboard
-<<<<<<< HEAD
-keymap.set('n', '<Leader>p', '"+gP')
+keymap('n', '<Leader>p', '"+gP')
 -- Leave without saving
-keymap.set('n', 'ZZ', '<Cmd>q!<CR>')
-=======
+keymap('n', 'ZZ', '<Cmd>q!<CR>')
 keymap('n', '<Leader>p', '"+gP')
 -- Exit but don't save nothing
 keymap('n', 'ZZ', '<Cmd>q!<CR>')
->>>>>>> 297ef2862d02a97e12a51cb469b30aa57ef53e71

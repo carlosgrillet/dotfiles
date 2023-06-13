@@ -34,7 +34,6 @@ protocol.CompletionItemKind = {
   '', -- Field
   '', -- Variable
   '', -- Class
-  'ﰮ', -- Interface
   '', -- Module
   '', -- Property
   '', -- Unit
@@ -50,7 +49,6 @@ protocol.CompletionItemKind = {
   '', -- Constant
   '', -- Struct
   '', -- Event
-'ﬦ', -- Operator
   '', -- TypeParameter
 }
 
@@ -86,7 +84,6 @@ nvim_lsp.cssls.setup {
 
 nvim_lsp.pyright.setup {
   on_attach = on_attach,
-<<<<<<< HEAD
   cmd = { "pyright-langserver", "--stdio"},
   filetypes = { "python" },
   root_dir = function(fname)
@@ -118,8 +115,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     severity_sort = true,
   }
 )
-=======
-}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -128,7 +123,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   virtual_text = { spacing = 4, prefix = "●" },
   severity_sort = true,
 })
->>>>>>> 297ef2862d02a97e12a51cb469b30aa57ef53e71
 
 nvim_lsp.yamlls.setup {
   on_attach = on_attach,
