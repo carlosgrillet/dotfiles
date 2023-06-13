@@ -1,0 +1,42 @@
+{
+  "palette": {
+        "os": "#ACB0BE",
+        "closer": "p:os",
+        "pink": "#F4B8E4",
+        "lavender": "#BABBF1",
+        "blue":  "#8CAAEE"
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "#F4B8E4",
+          "style": "plain",
+          "template": " \uf17a pwsh ",
+          "type": "text"
+        },
+        {
+          "foreground": "#e0f8ff",
+          "properties": {
+            "branch_icon": "\ue725 ",
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "style": "plain",
+          "template": "<#ffffff>[</>{{ .HEAD }}{{ if .Staging.Changed }}<#00AA00> \uf00c {{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }}<#E00038> \uf15b {{ .Working.String }}</>{{ end }}] ",
+          "type": "git"
+        },
+        {
+          "foreground": "#F4B8E4",
+          "style": "plain",
+          "template": "\u276f",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}

@@ -66,35 +66,27 @@ nvim_lsp.flow.setup {
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
+  capabilities = capabilities,
+  -- filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+  -- cmd = {"typescript-language-server", "--stdio"},
+  -- root_dir = vim.loop.cwd,
+}
+
+nvim_lsp.lua_ls.setup {
+  on_attach = on_attach,
 }
 
 nvim_lsp.sourcekit.setup {
   on_attach = on_attach,
 }
 
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.cssls.setup {
   on_attach = on_attach,
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
-      },
-
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false
-      },
-    },
-  },
 }
 
 nvim_lsp.pyright.setup {
   on_attach = on_attach,
+<<<<<<< HEAD
   cmd = { "pyright-langserver", "--stdio"},
   filetypes = { "python" },
   root_dir = function(fname)
@@ -126,6 +118,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     severity_sort = true,
   }
 )
+=======
+}
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+  underline = true,
+  update_in_insert = false,
+  virtual_text = { spacing = 4, prefix = "●" },
+  severity_sort = true,
+})
+>>>>>>> 297ef2862d02a97e12a51cb469b30aa57ef53e71
 
 nvim_lsp.yamlls.setup {
   on_attach = on_attach,
