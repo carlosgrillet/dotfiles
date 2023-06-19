@@ -48,6 +48,5 @@ keymap('n', '<Leader>Y', '"+Y')
 keymap('n', '<Leader>p', '"+gP')
 -- Leave without saving
 keymap('n', 'ZZ', '<Cmd>q!<CR>')
+-- Pasto from clipboard
 keymap('n', '<Leader>p', '"+gP')
--- Exit but don't save nothing
-keymap('n', 'ZZ', '<Cmd>q!<CR>')
