@@ -13,13 +13,7 @@ ts.setup {
   -- to avoid errors run sudo apt install g++
   ensure_installed = {
     'python',
-    'javascript',
-    'tsx',
-    'css',
-    'html',
-    'lua',
-    'json',
-    'yaml',
+    'lua',,
   },
   autotag = {
     enable = true,
