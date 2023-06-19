@@ -13,7 +13,7 @@ ts.setup {
   -- to avoid errors run sudo apt install g++
   ensure_installed = {
     'python',
-    'lua',,
+    'lua',
   },
   autotag = {
     enable = true,
