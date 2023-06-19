@@ -57,55 +57,15 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
-nvim_lsp.flow.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
-
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
-  -- cmd = {"typescript-language-server", "--stdio"},
-  -- root_dir = vim.loop.cwd,
-}
-
 nvim_lsp.lua_ls.setup {
   on_attach = on_attach,
 }
 
-nvim_lsp.sourcekit.setup {
+nvim_lsp.pyright.setup ({
   on_attach = on_attach,
-}
-
-nvim_lsp.cssls.setup {
-  on_attach = on_attach,
-}
-
-nvim_lsp.pyright.setup {
-  on_attach = on_attach,
-  cmd = { "pyright-langserver", "--stdio"},
-  filetypes = { "python" },
-  root_dir = function(fname)
-    return util.root_pattern(
-      ".git",
-      "setup.py",
-      "manage.py",
-      "setup.cfg",
-      "requirements.txt")(fname) or util.path.dirname(fname)
-    end,
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        diagnosticMode = "workspace",
-        useLibraryCodeForTypes = true,
-      },
-    },
-  },
-}
-
-nvim_lsp.tailwindcss.setup {}
+  capabilities = capabilities,
+  filetypes = {"python"}
+})
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -115,33 +75,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     severity_sort = true,
   }
 )
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  update_in_insert = false,
-  virtual_text = { spacing = 4, prefix = "●" },
-  severity_sort = true,
-})
-
-nvim_lsp.yamlls.setup {
-  on_attach = on_attach,
-  settings = {
-    cmd = { "yaml-language-server", "--stdio" },
-    filetypes = { "yaml", "yaml.docker-compose" },
-    yaml = {
-      schemas = {
-        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-        ["../path/relative/to/file.yml"] = "/.github/workflows/*",
-        ["/path/from/root/of/project"] = "/.github/workflows/*",
-      },
-    },
-  }
-}
-
-nvim_lsp.dockerls.setup {}
-
-nvim_lsp.bashls.setup {}
 
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
