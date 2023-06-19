@@ -7,9 +7,8 @@ mason.setup({})
 
 lspconfig.setup {
   ensure_installed = {
-    "lua_ls",
-    "cssls",
-    "tsserver",
     "pyright",
+    "lua_ls",
+    "prettierd",
   },
 }
