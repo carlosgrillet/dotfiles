@@ -21,6 +21,7 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
   use 'saadparwaiz1/cmp_luasnip' -- nvim-cmp source for luasnip
   use 'L3MON4D3/LuaSnip'
+  use 'github/copilot.vim'
   -- Language server tools
   use 'neovim/nvim-lspconfig' -- LSP
   use 'williamboman/nvim-lsp-installer' -- Allow you to manage LSP servers
