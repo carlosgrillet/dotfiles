@@ -60,8 +60,7 @@ packer.startup(function(use)
   use 'mattn/emmet-vim'
   use {
     "Djancyp/better-comments.nvim", -- For better comment lines
-    config = function()
-      require("better-comments").setup()
+    config = function() require("better-comment").Setup({})
     end
   } 
 end)
