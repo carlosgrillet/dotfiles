@@ -58,5 +58,10 @@ packer.startup(function(use)
   use 'tpope/vim-surround' -- For operations surrounding
   use 'tpope/vim-repeat' -- To repeat surround operations
   use 'mattn/emmet-vim'
-  use "Djancyp/better-comments.nvim" -- For better comment lines
+  use {
+    "Djancyp/better-comments.nvim", -- For better comment lines
+    config = function()
+      require("better-comments").setup()
+    end
+  } 
 end)
