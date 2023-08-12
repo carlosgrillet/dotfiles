@@ -63,8 +63,9 @@ nvim_lsp.lua_ls.setup {
 
 nvim_lsp.pyright.setup ({
   on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"python"}
+  -- In order to work on windows, comment this lines
+  -- capabilities = capabilities,
+  -- filetypes = {"python"}
 })
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
