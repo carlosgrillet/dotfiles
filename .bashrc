@@ -2,17 +2,24 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export LANG=en_IN.UTF-8
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
 
+# print docker info when login
+docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.State}}\t{{.RunningFor}}"
+
+# parse git branch name
+function parse_git_branch() {
+    git branch --show-current 2> /dev/null | sed -e 's/\(.*\)/ @\1/'
+}
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
-HISTTIMEFORMAT="%d/%m/%y %T "
+HISTTIMEFORMAT="%F %T "
 HISTIGNORE="clear:history"
 
 # append to the history file, don't overwrite it
@@ -29,8 +36,6 @@ shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
-export VISUAL=nvim
-export EDITOR="$VISUAL"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -52,20 +57,19 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u@\h]\[\033[00m\][\[\033[01;34m\]\W\[\033[00m\]]\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u@\h]\[\033[00m\][\[\033[01;34m\]\W\[\033[00m\]]\[\033[01;34m\]$(parse_git_branch)\[\033[00m\]\$ '
 else
-    #PS1='${debian_chroot:+($debian_chroot)}[\u@\h][\w]\$ '
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u@\h]\[\033[00m\][\[\033[01;34m\]\W\[\033[00m\]]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -94,25 +98,17 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
 alias l='ls -CF'
-alias ll='ls -AlFh'
-alias la='ls -lAh'
-alias g='git remote update &>/dev/null && git status'
-alias vim='nvim'
-alias ifs='speedometer -l  -r ens160 -t ens160 -m $(( 1024 * 1024 * 3 / 2 ))'
-alias sai='sudo apt install'
-alias py3='python3'
-alias ff='fzf'
-alias ansibleconfig='sudo nvim /etc/ansible/ansible.cfg'
-alias ansiblehosts='sudo nvim /etc/ansible/hosts'
-alias tmux='tmux -u'
 
-if [ -x "$(which exa)" ]; then
-  alias ls='exa -l'
-  alias la='exa -abghl'
-  alias lt='exa -TL 2'
-  alias ltf='exa -lTL 2'
-fi
+# user alias
+alias dockerls='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.State}}\t{{.RunningFor}}"'
+
+# user variables
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
