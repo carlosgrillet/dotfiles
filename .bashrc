@@ -6,11 +6,22 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# bash colors
+blk='\033[0;30m'
+red='\033[0;31m'
+grn='\033[0;32m'
+ylw='\033[0;33m'
+blu='\033[0;34m'
+prp='\033[0;35m'
+cyn='\033[0;36m'
+wht='\033[0;37m'
+nc='\033[00m'
+
 # user variables
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export TERM="xterm-256color"
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u@\h]\[\033[00m\][\[\033[01;34m\]\W\[\033[00m\]]\[\033[01;34m\]$(current_branch)\[\033[00m\]\$ '
+PS1="$grn[\u@\h]$nc[${blu}\W${nc}${wht}\$(current_branch)${nc}]\$ "
 
 # hisotry options
 HISTSIZE=1000
