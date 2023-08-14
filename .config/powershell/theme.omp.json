@@ -1,34 +1,40 @@
 {
   "palette": {
-        "os": "#ACB0BE",
-        "closer": "p:os",
-        "pink": "#F4B8E4",
-        "lavender": "#BABBF1",
-        "blue":  "#8CAAEE"
+    "blue": "#25BCFF",
+    "fg": "#E0F8FF",
+    "green": "#00ff47",
+    "pink": "#F4B8E4",
+    "red": "#E00038"
   },
   "blocks": [
     {
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#F4B8E4",
+          "foreground": "p:blue",
           "style": "plain",
-          "template": " \uf17a pwsh ",
+          "template": " \uf17a",
           "type": "text"
         },
         {
-          "foreground": "#e0f8ff",
+          "foreground": "p:pink",
+          "style": "plain",
+          "template": " pwsh ",
+          "type": "text"
+        },
+        {
+          "foreground": "p:fg",
           "properties": {
             "branch_icon": "\ue725 ",
             "fetch_status": true,
             "fetch_upstream_icon": true
           },
           "style": "plain",
-          "template": "<#ffffff>[</>{{ .HEAD }}{{ if .Staging.Changed }}<#00AA00> \uf00c {{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }}<#E00038> \uf15b {{ .Working.String }}</>{{ end }}] ",
+          "template": "<#f4b8e4>[</>{{ .HEAD }}{{ if .Staging.Changed }}<#00ff47> \uf00c {{ .Staging.String }}</>{{ end }}<#E00038>{{ if .Working.Changed }} \uf15b {{ .Working.String }}</>{{ end }}<#f4b8e4>]</> ",
           "type": "git"
         },
         {
-          "foreground": "#F4B8E4",
+          "foreground": "p:pink",
           "style": "plain",
           "template": "\u276f",
           "type": "text"
