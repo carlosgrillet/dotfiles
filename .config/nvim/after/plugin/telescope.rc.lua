@@ -74,7 +74,7 @@ vim.keymap.set("n", "sf", function()
     hidden = true,
     grouped = true,
     previewer = false,
-    initial_mode = "insert",
-    layout_config = { height = 20 }
+    initial_mode = "normal",
+    layout_config = { height = 40 }
   })
 end)
