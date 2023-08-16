@@ -1,18 +1,7 @@
 local keymap = vim.keymap.set
 
+-- Delete without yank
 keymap('n', 'x', '"_x')
--- Increment/decrement
---keymap('n', '+', '<C-a>')
---keymap('n', '-', '<C-x>')
-
--- Select all
---keymap.set('n', '<C-a>', 'gg<S-v>G')
-keymap('n', '+', '<C-a>')
-keymap('n', '-', '<C-x>')
--- Select all
-keymap('n', '<C-a>', 'gg<S-v>G')
--- New tab
-keymap('n', 'te', ':tabedit', { silent = true})
 -- Split window
 keymap('n', 'ss', ':split<Return><C-w>w', { silent = true })
 keymap('n', 'sv', ':vsplit<Return><C-w>w', { silent = true })
@@ -36,8 +25,7 @@ keymap('v', 'K', ":m '<-2<CR>gv=gv")
 keymap('n', 'n', 'nzzzv')
 keymap('n', 'N', 'Nzzzv')
 -- Stay cursor when join lines
-keymap('n', 'J', 'mzJ`z')
--- Keep curson in the middle when half-page jumping
+keymap('n', 'J', 'mzJ`z') -- Keep curson in the middle when half-page jumping
 keymap('n', '<C-d>', '<C-d>zz')
 keymap('n', '<C-u>', '<C-u>zz')
 -- Yank to the clipboard
@@ -48,5 +36,5 @@ keymap('n', '<Leader>Y', '"+Y')
 keymap('n', '<Leader>p', '"+gP')
 -- Leave without saving
 keymap('n', 'ZZ', '<Cmd>q!<CR>')
--- Pasto from clipboard
+-- Paste from clipboard
 keymap('n', '<Leader>p', '"+gP')
