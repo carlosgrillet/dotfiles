@@ -58,7 +58,9 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
 )
 
 nvim_lsp.lua_ls.setup {
+  -- In Windows run:  scoop install lua-language-server
   on_attach = on_attach,
+  capabilities = capabilities,
 }
 
 nvim_lsp.pyright.setup ({
