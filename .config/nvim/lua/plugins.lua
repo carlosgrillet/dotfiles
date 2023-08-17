@@ -64,4 +64,5 @@ packer.startup(function(use)
     config = function() require("better-comment").Setup({})
     end
   } 
+  use 'numToStr/Comment.nvim' -- For comment multiple lines
 end)
