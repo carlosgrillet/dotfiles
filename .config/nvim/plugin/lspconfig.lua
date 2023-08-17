@@ -58,16 +58,21 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
 )
 
 nvim_lsp.lua_ls.setup {
-  -- In Windows run:  scoop install lua-language-server
+  -- on Windows run:  scoop install lua-language-server
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+nvim_lsp.dockerls.setup {
+  -- on windows run: npm install -g dockerfile-language-server-nodejs
   on_attach = on_attach,
   capabilities = capabilities,
 }
 
 nvim_lsp.pyright.setup ({
+  -- on windows run: pip install pyright
   on_attach = on_attach,
-  -- In order to work on windows, comment this lines
-  -- capabilities = capabilities,
-  -- filetypes = {"python"}
+  capabilities = capabilities,
 })
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
