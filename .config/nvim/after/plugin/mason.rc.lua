@@ -9,5 +9,7 @@ lspconfig.setup {
   ensure_installed = {
     "pyright",
     "lua_ls",
+    "dockerls",
+    "docker_compose_language_service",
   },
 }
