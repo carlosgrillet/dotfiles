@@ -1,5 +1,5 @@
 # dotfiles
-This are some of my configurations. **Warning**: Don’t blindly use my settings unless you know what are you configuring
+These are some of my configurations. **Warning**: Don’t blindly use my settings unless you know what are you configuring
 
 Minimalistic terminal
 ![image](https://github.com/carlosgrillet/dotfiles/assets/13719979/c4176c32-4b65-48ec-8836-90db6c5b3699)
