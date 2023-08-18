@@ -1,0 +1,53 @@
+{
+  "workbench.colorTheme": "GitHub Dark Default",
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.minimap.enabled": false,
+  "editor.linkedEditing": true,
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.insert": "line",
+  "explorer.confirmDelete": false,
+  "security.workspace.trust.banner": "always",
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.fontFamily": "Hack Nerd Font Mono",
+  "workbench.iconTheme": "material-icon-theme",
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "editor.rulers": [80],
+  "liveServer.settings.donotShowInfoMsg": true,
+  "prettier.trailingComma": "all",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "terminal.integrated.tabStopWidth": 2,
+  "remote.SSH.remotePlatform": {
+    "python-dev": "linux",
+    "web-server": "linux"
+  },
+  "prettier.singleQuote": true,
+  "explorer.compactFolders": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.inlineSuggest.enabled": true,
+  "workbench.sideBar.location": "right",
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false
+  },
+  "workbench.tips.enabled": false,
+  "editor.cursorStyle": "block",
+  "workbench.startupEditor": "none",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.horizontal": "hidden",
+  "workbench.commandPalette.history": 10,
+  "workbench.editor.showTabs": false,
+  "workbench.activityBar.visible": false,
+  "gitlens.graph.minimap.additionalTypes": [
+    "localBranches",
+    "stashes",
+    "remoteBranches",
+    "tags"
+  ]
+}
