@@ -112,7 +112,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvi
 - [mattn/emmet-vim](https://github.com/mattn/emmet-vim)
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 - [norcalli/nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua)
-- [numToStr/Comment.nvi](https://github.com/numToStr/Comment.nvi)
+- [numToStr/Comment.nvi](https://github.com/numToStr/Comment.nvim)
 - [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
 - [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 - [nvim-telescope/telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim)
