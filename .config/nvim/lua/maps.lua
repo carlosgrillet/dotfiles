@@ -38,3 +38,11 @@ keymap('n', '<Leader>p', '"+gP')
 keymap('n', 'ZZ', '<Cmd>q!<CR>')
 -- Paste from clipboard
 keymap('n', '<Leader>p', '"+gP')
+-- Delete word backward on insert
+keymap('i', '<C-h>', '<Esc>diWgea')
+-- Move to the end of the line on insert
+keymap('i', '<C-l>', '<Esc>A')
+-- Don't use scape to exit inset mode
+keymap('i', '<Esc>', '<Nop>')
+keymap('i', '<C-c>', '<Esc>')
+
