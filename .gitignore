@@ -2,3 +2,4 @@
 /.config/htop/
 /.config/github-copilot/
 /.config/ookla/
+/.config/nvim/plugin/packer_compiled.lua
