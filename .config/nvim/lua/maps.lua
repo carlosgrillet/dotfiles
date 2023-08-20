@@ -1,10 +1,10 @@
 local keymap = vim.keymap.set
 
--- Delete without yank
+-- Delete character without yank
 keymap('n', 'x', '"_x')
 -- Split window
-keymap('n', 'ss', ':split<Return><C-w>w', { silent = true })
-keymap('n', 'sv', ':vsplit<Return><C-w>w', { silent = true })
+keymap('n', 'ss', ':new<Return><C-w>w', { silent = true })
+keymap('n', 'sv', ':vnew<Return><C-w>w', { silent = true })
 -- Move window
 keymap('n', '<Space>', '<C-w>w')
 keymap('', 'sh', '<C-w>h')
@@ -25,9 +25,12 @@ keymap('v', 'K', ":m '<-2<CR>gv=gv")
 keymap('n', 'n', 'nzzzv')
 keymap('n', 'N', 'Nzzzv')
 -- Stay cursor when join lines
-keymap('n', 'J', 'mzJ`z') -- Keep curson in the middle when half-page jumping
+keymap('n', 'J', 'mzJ`z')
+-- Keep curson in the middle when half-page jumping
 keymap('n', '<C-d>', '<C-d>zz')
 keymap('n', '<C-u>', '<C-u>zz')
+-- Keep curson in the middle at the end of the file
+keymap('n', 'G', 'Gzz')
 -- Yank to the clipboard
 keymap('n', '<Leader>y', '"+y')
 keymap('v', '<Leader>y', '"+y')
@@ -36,13 +39,12 @@ keymap('n', '<Leader>Y', '"+Y')
 keymap('n', '<Leader>p', '"+gP')
 -- Leave without saving
 keymap('n', 'ZZ', '<Cmd>q!<CR>')
--- Paste from clipboard
-keymap('n', '<Leader>p', '"+gP')
 -- Delete word backward on insert
 keymap('i', '<C-h>', '<Esc>diWgea')
 -- Move to the end of the line on insert
 keymap('i', '<C-l>', '<Esc>A')
 -- Don't use scape to exit inset mode
 keymap('i', '<Esc>', '<Nop>')
-keymap('i', '<C-c>', '<Esc>')
-
+keymap({'i', 'n'}, '<C-c>', '<Esc>')
+--Insert new line in the middle of the line
+keymap('i', '<C-j>', '<Esc>o')
