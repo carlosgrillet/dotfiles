@@ -10,6 +10,5 @@ lspconfig.setup {
     "pyright", -- pyhton
     "lua_ls", -- lua
     "dockerls", -- Dockerfile
-    "prettierd", -- formatter
   },
 }
