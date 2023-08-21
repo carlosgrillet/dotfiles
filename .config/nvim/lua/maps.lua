@@ -44,7 +44,6 @@ keymap('i', '<C-h>', '<Esc>diWgea')
 -- Move to the end of the line on insert
 keymap('i', '<C-l>', '<Esc>A')
 -- Don't use scape to exit inset mode
-keymap('i', '<Esc>', '<Nop>')
 keymap({'i', 'n'}, '<C-c>', '<Esc>')
 --Insert new line in the middle of the line
 keymap('i', '<C-j>', '<Esc>o')
