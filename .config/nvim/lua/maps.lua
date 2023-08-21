@@ -3,8 +3,8 @@ local keymap = vim.keymap.set
 -- Delete character without yank
 keymap('n', 'x', '"_x')
 -- Split window
-keymap('n', 'ss', ':new<Return><C-w>w', { silent = true })
-keymap('n', 'sv', ':vnew<Return><C-w>w', { silent = true })
+keymap('n', 'ss', ':new<Return>', { silent = true })
+keymap('n', 'sv', ':vnew<Return>', { silent = true })
 -- Move window
 keymap('n', '<Space>', '<C-w>w')
 keymap('', 'sh', '<C-w>h')
