@@ -12,14 +12,21 @@ nvim_tree.setup({
     update_cwd = true,
     ignore_list = {}
   },
-  system_open = {
-    cmd = nil,
-    args = {}
+  renderer = {
+    root_folder_label = false,
   },
   view = {
     width = 30,
     side = 'right',
-  }
+    number = true,
+    relativenumber = true,
+  },
+  filters = {
+    custom = {
+      '.git',
+    },
+  },
+
 })
 
 -- Map nvim-tree command
