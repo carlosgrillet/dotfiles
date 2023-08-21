@@ -65,4 +65,5 @@ packer.startup(function(use)
     end
   }
   use 'numToStr/Comment.nvim' -- For comment multiple lines
+  use 'nvim-tree/nvim-tree.lua' -- File explorer 
 end)
