@@ -63,6 +63,11 @@ packer.startup(function(use)
     "Djancyp/better-comments.nvim", -- For better comment lines
     config = function() require("better-comment").Setup({})
     end
-  } 
+  }
   use 'numToStr/Comment.nvim' -- For comment multiple lines
+  use {
+    'nvim-tree/nvim-tree.lua', -- File explorer
+    config = function() require("nvim-tree").setup({})
+    end
+  }
 end)
