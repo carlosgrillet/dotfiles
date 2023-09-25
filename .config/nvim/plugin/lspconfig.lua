@@ -63,6 +63,13 @@ nvim_lsp.lua_ls.setup {
   capabilities = capabilities,
 }
 
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" },
+  capabilities = capabilities
+}
+
 nvim_lsp.dockerls.setup {
   -- on windows run: npm install -g dockerfile-language-server-nodejs
   on_attach = on_attach,
