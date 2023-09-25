@@ -14,6 +14,9 @@ ts.setup {
   ensure_installed = {
     'python',
     'lua',
+    'tsx',
+    'javascript',
+    'json',
   },
   autotag = {
     enable = true,
