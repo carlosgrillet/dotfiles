@@ -10,6 +10,7 @@ packer.startup(function(use)
   use 'wbthomason/packer.nvim' -- Packet manager for neovim
   -- Theme, colors and icons
   use { 'svrana/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
+  use 'craftzdog/solarized-osaka.nvim' -- new solarized theme
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'nvim-lua/plenary.nvim' -- Common utilities
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
