@@ -1,6 +1,7 @@
 require("solarized-osaka").setup({
   -- your configuration comes here
   -- or leave it empty to use the default settings
+  style = "storm", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
   transparent = true, -- Enable this to disable setting the background color
   terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
   styles = {
@@ -24,6 +25,8 @@ require("solarized-osaka").setup({
   --- function will be called with a ColorScheme table
   --  @param colors ColorScheme
   on_colors = function(colors)
+    colors.bg_float = "#002b36"
+    colors.bg_sidebar = "#002b36"
     colors.hint = "#FA7334"
     colors.error = colors.red
     colors.warning = colors.yellow100
