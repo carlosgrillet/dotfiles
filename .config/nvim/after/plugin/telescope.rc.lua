@@ -48,7 +48,22 @@ vim.keymap.set('n', ';f',
   function()
     builtin.find_files({
       no_ignore = false,
-      hidden = true
+      hidden = true,
+      file_ignore_patterns = {
+        -- Files
+        "%.a",
+        "%.class",
+        "%.mkv",
+        "%.mp4",
+        "%.o",
+        "%.out",
+        "%.pdf",
+        "%.zip",
+        -- Directories
+        ".cache",
+        ".git/",
+        ".github/",
+      },
     })
   end)
 vim.keymap.set('n', ';r', function()
