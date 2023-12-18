@@ -16,6 +16,7 @@ packer.startup(function(use)
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'norcalli/nvim-colorizer.lua' -- Color highlighter
+  use "lukas-reineke/indent-blankline.nvim" -- Indent lines
   -- Completion tools
   use 'hrsh7th/nvim-cmp' -- Completion
   use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
