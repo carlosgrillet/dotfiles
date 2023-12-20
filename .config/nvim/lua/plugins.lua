@@ -48,6 +48,11 @@ packer.startup(function(use)
   }
   use 'nvim-telescope/telescope.nvim' -- High extendable fuzzy finder
   use 'nvim-telescope/telescope-file-browser.nvim' -- File fuzzy finder
+  use {
+    "ThePrimeagen/harpoon", -- Quick navigation between files
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+  }
   use 'windwp/nvim-autopairs' -- Auto pair plugin
   use 'windwp/nvim-ts-autotag' -- Autoclose and autorename html tags
   use({
