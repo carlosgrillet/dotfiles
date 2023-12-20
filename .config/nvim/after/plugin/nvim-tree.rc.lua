@@ -16,7 +16,7 @@ nvim_tree.setup({
     root_folder_label = false,
   },
   view = {
-    width = 30,
+    width = 50,
     side = 'right',
     number = true,
     relativenumber = true,
