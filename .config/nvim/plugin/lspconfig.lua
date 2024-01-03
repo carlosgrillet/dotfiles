@@ -76,11 +76,17 @@ nvim_lsp.dockerls.setup {
   capabilities = capabilities,
 }
 
-nvim_lsp.pyright.setup ({
+nvim_lsp.pyright.setup {
   -- on windows run: pip install pyright
   on_attach = on_attach,
   capabilities = capabilities,
-})
+}
+
+nvim_lsp.tailwindcss.setup {
+  -- npm install -g @tailwindcss/language-server
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
