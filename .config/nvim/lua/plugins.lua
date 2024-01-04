@@ -31,13 +31,6 @@ packer.startup(function(use)
   use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
   use 'williamboman/mason.nvim' -- UI for Mange LSP servers
   use 'williamboman/mason-lspconfig.nvim'
-  use ({
-    'nvimdev/lspsaga.nvim', -- LSP UIs
-    after = 'nvim-lspconfig',
-    config = function()
-      require('lspsaga').setup({})
-    end,
-  })
   -- Nvim tools
   use {
     'nvim-treesitter/nvim-treesitter',
