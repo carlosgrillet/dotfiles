@@ -7,8 +7,11 @@ mason.setup({})
 
 lspconfig.setup {
   ensure_installed = {
-    "pyright", -- pyhton
-    "lua_ls", -- lua
     "dockerls", -- Dockerfile
+    "eslint", -- javascript
+    "lua_ls", -- lua
+    "pyright", -- pyhton
+    "tailwindcss", -- tailwindcss
+    "tsserver", -- typescript
   },
 }
