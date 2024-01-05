@@ -63,6 +63,7 @@ vim.keymap.set('n', ';f',
         ".cache",
         ".git/",
         ".github/",
+        ".node_modules/",
       },
     })
   end)
