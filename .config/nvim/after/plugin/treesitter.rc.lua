@@ -23,6 +23,7 @@ ts.setup {
     'tsx',
     'typescript',
     'yaml',
+    'vimdoc',
   },
   autotag = {
     enable = true,
