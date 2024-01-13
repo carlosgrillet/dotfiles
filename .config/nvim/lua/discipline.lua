@@ -12,7 +12,7 @@ function M.repeated()
 			if vim.v.count > 0 then
 				count = 0
 			end
-			if count > 5 then
+			if count > 10 then
 				ok, id = pcall(vim.notify, "Are you a machinegun?", vim.log.levels.WARN, {
 					icon = "🤠",
 					replace = id,
