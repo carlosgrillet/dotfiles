@@ -66,4 +66,11 @@ packer.startup(function(use)
   use 'numToStr/Comment.nvim' -- For comment multiple lines
   use 'nvim-tree/nvim-tree.lua' -- File explorer 
   use 'nathanalderson/yang.vim' -- Syntax highlight for YANG
+  use {
+    'folke/noice.nvim', -- For UI
+    requires = {
+      'MunifTanjim/nui.nvim',
+      'rcarriga/nvim-notify',
+    }
+  }
 end)
