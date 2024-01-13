@@ -13,8 +13,7 @@ function M.repeated()
 				count = 0
 			end
 			if count > 10 then
-				ok, id = pcall(vim.notify, "Are you a machinegun?", vim.log.levels.WARN, {
-					icon = "🤠",
+				ok, id = pcall(vim.notify, "Don't break that key", vim.log.levels.WARN, {
 					replace = id,
 					keep = function()
 						return count >= 10
@@ -39,9 +38,7 @@ function M.arrows()
 	---@type table?
 	for _, key in ipairs({ "<up>", "<down>", "<left>", "<right>" }) do
 		vim.keymap.set("n", key, function()
-			pcall(vim.notify, "What are you doing?", vim.log.levels.WARN, {
-        icon = "🐶",
-      })
+			pcall(vim.notify, "What are you doing?", vim.log.levels.WARN)
     end
     )
   end
