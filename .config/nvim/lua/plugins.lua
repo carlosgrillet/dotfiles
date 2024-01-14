@@ -27,7 +27,6 @@ packer.startup(function(use)
   -- Language server tools
   use 'neovim/nvim-lspconfig' -- LSP
   use 'williamboman/nvim-lsp-installer' -- Allow you to manage LSP servers
-  use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
   use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
   use 'williamboman/mason.nvim' -- UI for Mange LSP servers
   use 'williamboman/mason-lspconfig.nvim'
