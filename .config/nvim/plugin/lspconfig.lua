@@ -88,6 +88,12 @@ nvim_lsp.tailwindcss.setup {
   capabilities = capabilities,
 }
 
+nvim_lsp.bashls.setup {
+  -- npm install -g bash-language-server
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
@@ -98,7 +104,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
 -- Diagnostic symbols in the sign column (gutter)
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = "x ", Warn = " ", Hint = "! ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
