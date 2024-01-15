@@ -6,7 +6,7 @@ end
 
 vim.cmd [[packadd packer.nvim]]
 
-packer.startup(function(use)
+packer.startup({ function(use)
   use 'wbthomason/packer.nvim' -- Packet manager for neovim
   -- Theme, colors and icons
   use { 'svrana/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
@@ -72,4 +72,9 @@ packer.startup(function(use)
       'rcarriga/nvim-notify',
     }
   }
-end)
+end,
+config = {
+  display = {
+    open_fn = require('packer.util').float,
+  }
+}})
