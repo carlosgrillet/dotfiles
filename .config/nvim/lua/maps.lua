@@ -29,9 +29,12 @@ keymap('n', 'n', 'nzzzv')
 keymap('n', 'N', 'Nzzzv')
 -- Stay cursor when join lines
 keymap('n', 'J', 'mzJ`z')
--- Keep curson in the middle when half-page jumping
+-- Keep curson in the middle when moving
 keymap('n', '<C-d>', '<C-d>zz')
 keymap('n', '<C-u>', '<C-u>zz')
+-- Keep curson in the middle when jumping
+keymap('n', '<C-o>', '<C-o>zz')
+keymap('n', '`.', '`.zz')
 -- Keep curson in the middle at the end of the file
 keymap('n', 'G', 'Gzz')
 -- Yank to the clipboard
