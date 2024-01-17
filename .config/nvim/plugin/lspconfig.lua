@@ -76,10 +76,18 @@ nvim_lsp.dockerls.setup {
   capabilities = capabilities,
 }
 
-nvim_lsp.pyright.setup {
-  -- on windows run: pip install pyright
+nvim_lsp.pylsp.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          maxLineLength = 100
+        }
+      }
+    }
+  }
 }
 
 nvim_lsp.tailwindcss.setup {

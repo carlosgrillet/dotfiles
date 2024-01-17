@@ -18,7 +18,7 @@ lspconfig.setup {
     "dockerls", -- Dockerfile
     "eslint", -- javascript
     "lua_ls", -- lua
-    "pyright", -- pyhton
+    "pylsp", -- pyhton
     "tailwindcss", -- tailwindcss
     "tsserver", -- typescript
     "bashls", -- bash
