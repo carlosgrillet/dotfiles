@@ -1,5 +1,6 @@
 local status, conform = pcall(require, "conform")
 if not status then
+	vim.notify("Failed to load conform")
 	return
 end
 
