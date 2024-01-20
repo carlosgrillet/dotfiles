@@ -54,6 +54,7 @@ packer.startup({ function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'dinhhuy258/git.nvim' -- For git blame & browse
   use 'sindrets/diffview.nvim' -- For git diff view
+  use 'tpope/vim-fugitive' -- For git commands
   use 'tpope/vim-surround' -- For operations surrounding
   use 'tpope/vim-repeat' -- To repeat surround operations
   use 'mattn/emmet-vim'
