@@ -23,10 +23,11 @@ ts.setup({
 		"json",
 		"lua",
 		"python",
+		"regex",
 		"tsx",
 		"typescript",
-		"yaml",
 		"vimdoc",
+		"yaml",
 	},
 	autotag = {
 		enable = true,
