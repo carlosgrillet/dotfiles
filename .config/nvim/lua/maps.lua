@@ -16,6 +16,8 @@ keymap("", "sj", "<C-w>j")
 keymap("", "sl", "<C-w>l")
 keymap("n", "<C-d>", "<C-d>zz")
 keymap("n", "<C-u>", "<C-u>zz")
+keymap("n", "}", "}zz")
+keymap("n", "{", "{zz")
 -- Resize window
 keymap("n", "<C-w><left>", "<C-w><")
 keymap("n", "<C-w><right>", "<C-w>>")
