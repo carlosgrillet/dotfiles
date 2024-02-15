@@ -8,7 +8,7 @@ conform.setup({
 	formatters_by_ft = {
 		javascript = { "prettierd" },
 		lua = { "stylua" },
-		python = { "black", "isort" },
+		python = { "black --skip-string-normalization", "isort" },
 		json = { "prettierd" },
 	},
 	format_on_save = {
