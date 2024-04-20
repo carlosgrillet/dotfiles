@@ -62,3 +62,7 @@ function vimdir(){
   cd $env:LOCALAPPDATA/nvim
   vim . 
 }
+
+function dockerls(){
+  docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.State}}\t{{.RunningFor}}"
+}
