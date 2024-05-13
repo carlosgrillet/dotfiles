@@ -1,171 +1,198 @@
-# Created by newuser for 5.8
-#------------------------------------------------------------------#
-# File:     .zshrc   ZSH resource file                             #
-# Version:  0.1.16                                                 #
-# Author:   Øyvind "Mr.Elendig" Heggstad <mrelendig@har-ikkje.net> #
-#------------------------------------------------------------------#
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-#-----------------------------
-# Source some stuff
-#-----------------------------
-if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-  . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="carlosgrillet"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+# User aliases
+
+alias dockerls='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.State}}\t{{.RunningFor}}"'
+alias gc='git clone'
+alias la='ls -lah --color=auto'
+alias ls='ls -lh --color=auto'
+alias lzd='lazydocker'
+alias tree='tree -C'
+alias untar='tar -zxvf'
+alias vim='nvim'
+
+if [[ $(arch) -eq "i386" ]]; then
+  alias brew='/usr/local/bin/brew'
+  alias python="/usr/local/opt/python@3.10/bin/python3.10"
+  alias python3="/usr/local/opt/python@3.10/bin/python3.10"
+  export CFLAGS='-I/usr/local/opt/zlib/include -L/usr/local/opt/zlib/lib'
+  export LDFLAGS="-L/usr/local/opt/zlib/lib"
+  export CPPFLAGS="-I/usr/local/opt/zlib/include"
+  export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+  export PATH="/usr/local/opt/python@3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+else
+  alias python='python3'
 fi
 
-BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+if [[ -f /opt/homebrew/bin/kubecolor ]]; then
+  alias k='kubecolor'
+fi
 
-#------------------------------
-# Loging message stuff
-#------------------------------
-neofetch
+# User functions
 
-#------------------------------
-# History stuff
-#------------------------------
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-
-#------------------------------
-# Variables
-#------------------------------
-export BROWSER="chromium"
-export EDITOR="nvim"
-export PATH="${PATH}:${HOME}/bin:${HOME}/.cabal/bin"
-export GOPATH="$HOME/go"
-
-#-----------------------------
-# Dircolors
-#-----------------------------
-LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
-export LS_COLORS
-
-#------------------------------
-# Keybindings
-#------------------------------
-bindkey -v
-typeset -g -A key
-bindkey '^?' backward-delete-char
-bindkey '^[[5~' up-line-or-history
-bindkey '^[[3~' delete-char
-bindkey '^[[6~' down-line-or-history
-bindkey '^[[A' up-line-or-search
-bindkey '^[[D' backward-char
-bindkey '^[[B' down-line-or-search
-bindkey '^[[C' forward-char 
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
-
-#------------------------------
-# Alias stuff
-#------------------------------
-alias ls="ls --color -F"
-alias ll="ls --color -lh"
-alias la="ls --color -a"
-alias spm="sudo pacman"
-alias vim="nvim"
-
-#------------------------------
-# ShellFuncs
-#------------------------------
-# -- coloured manuals
-man() {
-  env \
-    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-    LESS_TERMCAP_md=$(printf "\e[1;31m") \
-    LESS_TERMCAP_me=$(printf "\e[0m") \
-    LESS_TERMCAP_se=$(printf "\e[0m") \
-    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-    LESS_TERMCAP_ue=$(printf "\e[0m") \
-    LESS_TERMCAP_us=$(printf "\e[1;32m") \
-    man "$@"
-}
-
-#------------------------------
-# Comp stuff
-#------------------------------
-zmodload zsh/complist 
-autoload -Uz compinit
-compinit
-zstyle :compinstall filename '${HOME}/.zshrc'
-
-#- buggy
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-#-/buggy
-
-zstyle ':completion:*:pacman:*' force-list always
-zstyle ':completion:*:*:pacman:*' menu yes select
-
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:kill:*'   force-list always
-
-zstyle ':completion:*:*:killall:*' menu yes select
-zstyle ':completion:*:killall:*'   force-list always
-
-#------------------------------
-# Window title
-#------------------------------
-case $TERM in
-  termite|*xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)term)
-    precmd () {
-      vcs_info
-      print -Pn "\e]0;[%n@%M][%~]%#\a"
-    } 
-    preexec () { print -Pn "\e]0;[%n@%M][%~]%# ($1)\a" }
-    ;;
-  screen|screen-256color)
-    precmd () { 
-      vcs_info
-      print -Pn "\e]83;title \"$1\"\a" 
-      print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a" 
-    }
-    preexec () { 
-      print -Pn "\e]83;title \"$1\"\a" 
-      print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a" 
-    }
-    ;; 
-esac
-
-#------------------------------
-# Prompt
-#------------------------------
-autoload -U colors zsh/terminfo
-colors
-
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git hg
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git*' formats "%{${fg[green]}%}[%{${fg[cyan]}%}%s%{${fg[green]}%}][%{${fg[blue]}%}%r/%S%%{${fg[cyan]}%}][%{${fg[blue]}%}%b%{${fg[red]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
-
-setprompt() {
-  setopt prompt_subst
-
-  if [[ -n "$SSH_CLIENT"  ||  -n "$SSH2_CLIENT" ]]; then 
-    p_host='%F{white}%M%f'
+tm() {
+  if [ -z "$1" ]; then
+    echo "Use this to attach to a tmux session"
+    echo "Usage: t <session-name>"
+    return 1
   else
-    p_host='%F{green}%M%f'
+    tmux a -t "$1"
   fi
-
-  PS1=${(j::Q)${(Z:Cn:):-$'
-    %F{red}[%f
-    %(!.%F{red}%n%f.%F{cyan}%n%f)
-    %F{red}::%f
-    ${p_host}
-    %F{red}][%f
-    %F{blue}%~%f
-    %F{red}]%f
-    %(!.%F{red}%#%f.%F{green}%#%f)
-    " "
-  '}}
-
-  PS2=$'%_>'
-  RPROMPT=$'${vcs_info_msg_0_}'
 }
-setprompt
 
+showme() {
+  if [ -z "$1" ]; then
+    echo "Use this to find files wthing a directory"
+    echo "Usage: showme <regex>"
+    return 1
+  else
+    find . | grep -i "$1"
+  fi
+}
 
-# vim: set ts=2 sw=2 et:
+search () {
+  if [ -z "$1" ]; then
+    echo "Use this to find a text within all files in a directory"
+    echo "Usage: search <regex>"
+    return 1
+  else
+    egrep -rniI "$1" . | sort | uniq
+  fi
+}
+
+pubip() {
+  curl -s https://api64.ipify.org\?format\=json | jq -r .ip 
+}
+
+sshkey() {
+  echo "#Carlos Grillet"
+  cat ~/.ssh/id_rsa.pub
+}
+
+godu() {
+  cd ~/nso-rosetta
+  source ncsrc
+  cd ncs-run-5.7.13
+  ncs
+}
+
+tmsusit() {
+  tmux new-session -d -s susit -n REPO -c ~/susit/tools \; \
+    new-window -t susit -n NVIM -c ~/susit/tools \; \
+    send-keys -t susit:2 'nvim' C-m \; \
+    new-window -t susit -n PROD \; \
+    new-window -t susit -n DB-PROD \; \
+    new-window -t susit -n TOOLING \; \
+    select-window -t susit:1
+}
+
+tmdu() {
+  tmux new-session -d -s du -n DIR -c ~/nso-rosetta \; \
+    send-keys -t du:1 'source ncsrc' C-m \; \
+    new-window -t du -n REPO -c ~/github/ebb \; \
+    new-window -t du -n NVIM -c ~/github/ebb \; \
+    send-keys -t du:3 'nvim' C-m \; \
+    new-window -t du -n LOGS -c ~/nso-rosetta/ncs-run-5.7.13/logs \; \
+    select-window -t du:1
+}
