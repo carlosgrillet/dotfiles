@@ -1,7 +1,4 @@
-local discipline = require("discipline")
 local keymap = vim.keymap.set
-discipline.repeated()
-discipline.arrows()
 
 -- Delete character without yank
 keymap("n", "x", '"_x')
