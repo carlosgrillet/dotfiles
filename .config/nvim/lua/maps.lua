@@ -43,7 +43,7 @@ keymap("n", "<Leader>Y", '"+Y')
 -- Paste from clipboard
 keymap("n", "<Leader>p", '"+gP')
 -- Leave without saving
-keymap("n", "ZZ", "<Cmd>q!<CR>")
+keymap("n", "ZZ", "<Cmd>qa!<CR>")
 -- Delete word backward on insert
 keymap("i", "<C-h>", "<Esc>diWgea")
 -- Move to the end of the line on insert
