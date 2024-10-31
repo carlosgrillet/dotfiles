@@ -6,10 +6,10 @@ end
 
 notify.setup({
 	max_width = function()
-		return vim.o.columns * 0.5
+		return math.floor(vim.o.columns * 0.5)
 	end,
 	max_height = function()
-		return vim.o.lines * 0.3
+		return math.floor(vim.o.lines * 0.3)
 	end,
 	on_open = function(win)
 		vim.api.nvim_win_set_config(win, { zindex = 100 })
