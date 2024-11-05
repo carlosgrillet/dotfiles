@@ -7,7 +7,6 @@ end
 ts.setup({
   highlight = {
     enable = true,
-    disable = { "c", "cpp" },
   },
   indent = {
     enable = true,
@@ -19,7 +18,6 @@ ts.setup({
     "diff",
     "html",
     "javascript",
-    "json",
     "json",
     "lua",
     "python",

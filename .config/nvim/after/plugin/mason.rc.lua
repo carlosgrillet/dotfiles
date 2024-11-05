@@ -25,8 +25,7 @@ lspconfig.setup({
 		"eslint", -- javascript
 		"lua_ls", -- lua
 		"pylsp", -- pyhton
-		"tailwindcss", -- tailwindcss
-		"tsserver", -- typescript
+		"ts_ls", -- typescript
 		"bashls", -- bash
 	},
 	automatic_installation = true,
