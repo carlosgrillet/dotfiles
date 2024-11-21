@@ -100,6 +100,7 @@ nvim_lsp.bashls.setup({
 })
 
 nvim_lsp.gopls.setup {
+  -- go install golang.org/x/tools/gopls@latest
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {"gopls"},
