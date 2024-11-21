@@ -99,6 +99,23 @@ nvim_lsp.bashls.setup({
 	capabilities = capabilities,
 })
 
+nvim_lsp.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {"gopls"},
+  filetypes = {"go", "gomod", "gowork", "gotmpl"},
+  root_dir = nvim_lsp.util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
+  },
+}
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 	underline = true,
 	update_in_insert = false,

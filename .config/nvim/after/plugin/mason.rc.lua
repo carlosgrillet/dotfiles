@@ -21,12 +21,13 @@ mason.setup({
 
 lspconfig.setup({
 	ensure_installed = {
+		"bashls",   -- bash
 		"dockerls", -- Dockerfile
-		"eslint", -- javascript
-		"lua_ls", -- lua
-		"pylsp", -- pyhton
-		"ts_ls", -- typescript
-		"bashls", -- bash
+		"eslint",   -- javascript
+		"lua_ls",   -- lua
+		"pylsp",    -- pyhton
+		"ts_ls",    -- typescript
+    "gopls",    -- go
 	},
 	automatic_installation = true,
 })
