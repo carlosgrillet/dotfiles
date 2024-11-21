@@ -110,8 +110,10 @@ nvim_lsp.gopls.setup {
     gopls = {
       completeUnimported = true,
       usePlaceholders = true,
+      gofumpt = true,
       analyses = {
         unusedparams = true,
+        unusedvariables = true,
       },
     },
   },
