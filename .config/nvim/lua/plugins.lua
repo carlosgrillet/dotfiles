@@ -80,6 +80,7 @@ packer.startup({
       },
     })
     use("mg979/vim-visual-multi") -- For multiple cursors
+    use ("wakatime/vim-wakatime") -- For time mesurement
   end,
   config = {
     display = {
