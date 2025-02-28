@@ -33,6 +33,7 @@ packer.startup({
     use("williamboman/mason.nvim")       -- UI for Mange LSP servers
     use("williamboman/mason-lspconfig.nvim")
     use("stevearc/conform.nvim")         -- Formatter pluggin
+    use("mfussenegger/nvim-lint")        -- Linter plugin
     -- Nvim tools
     use({
       "nvim-treesitter/nvim-treesitter",
@@ -88,3 +89,41 @@ packer.startup({
     },
   },
 })
+
+
+
+
+
+
+
+-- use("wbthomason/packer.nvim")               -- Packet manager for neovim
+-- 
+-- -- Core tools
+-- use("neovim/nvim-lspconfig")                -- LSP
+-- use("mfussenegger/nvim-dap")                -- DAP
+-- use("mfussenegger/nvim-lint")               -- Linter
+-- use("mhartington/formatter.nvim")           -- Formatter
+-- use("williamboman/nvim-lsp-installer")      -- Allow you to manage LSP servers
+-- use("williamboman/mason.nvim")              -- UI for Mange LSP servers
+-- use("williamboman/mason-lspconfig.nvim")    -- Hook for Mason to work with lspconfig
+-- use("rcarriga/nvim-dap-ui")                 -- UI for DAP
+-- use("nvim-neotest/nvim-nio")                -- Required by nvim-dap-ui
+-- 
+-- -- Completion tools
+-- use("hrsh7th/nvim-cmp")                     -- Completion
+-- use("hrsh7th/cmp-buffer")                   -- nvim-cmp source for buffer words
+-- use("hrsh7th/cmp-nvim-lsp")                 -- nvim-cmp source for neovim's built-in LSP
+-- 
+-- -- Nvim tools
+-- use("nvim-treesitter/nvim-treesitter")      -- Parser generator
+-- use("nvim-telescope/telescope.nvim")        -- High extendable fuzzy finder
+-- use("windwp/nvim-autopairs")                -- Auto pair plugin
+-- use("tpope/vim-surround")                   -- For operations surrounding
+-- use("tpope/vim-repeat")                     -- To repeat surround operations
+-- use("nvim-tree/nvim-tree.lua")              -- File explorer
+-- use("folke/noice.nvim")                     -- Enhanced UI
+-- use("wakatime/vim-wakatime")                -- For time mesurement
+-- 
+-- -- Theme, colors and icons
+-- use("nvim-lualine/lualine.nvim")            -- Statusline
+-- use("nvim-lua/plenary.nvim")                -- Common utilities
