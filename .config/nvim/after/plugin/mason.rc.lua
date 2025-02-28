@@ -26,6 +26,7 @@ lspconfig.setup({
 		"eslint",   -- javascript
 		"lua_ls",   -- lua
 		"pylsp",    -- pyhton
+    "pylint",   -- pyhton
 		"ts_ls",    -- typescript
     "gopls",    -- go
 	},
