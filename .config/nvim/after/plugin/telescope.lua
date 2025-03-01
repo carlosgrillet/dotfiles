@@ -21,6 +21,7 @@ vim.keymap.set("n", ";f", function()
 		hidden = true,
 		file_ignore_patterns = {
 			-- Files
+			"__init__",
 			"%.a",
 			"%.class",
 			"%.mkv",
@@ -33,6 +34,7 @@ vim.keymap.set("n", ";f", function()
 			"%.zip",
 			"%.tar",
 			"%.gz",
+			"%.whl",
 			-- Directories
 			".cache/",
 			".git/",
