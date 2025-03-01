@@ -55,3 +55,11 @@ vim.opt.formatoptions:append { 'r' }
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99
+
+-- Set filetype to HCL for .tf extensions
+vim.api.nvim_create_autocmd("BufRead", {
+    pattern = {"*.tf"},
+    callback = function()
+        vim.bo.filetype = "hcl"
+    end
+})
