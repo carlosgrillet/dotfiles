@@ -33,6 +33,7 @@ packer.startup({
 		use("nvim-tree/nvim-tree.lua")              -- File explorer
 		use("wakatime/vim-wakatime")                -- For time mesurement
     use("windwp/nvim-autopairs")                -- Autopair characters
+    use("lewis6991/gitsigns.nvim")              -- Buffer integration wit Git
 
 		-- Theme, colors and icons
 		use("nvim-lualine/lualine.nvim")            -- Statusline
