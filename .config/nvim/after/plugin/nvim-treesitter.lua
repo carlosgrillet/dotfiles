@@ -13,17 +13,17 @@ ts.setup({
     disable = {},
   },
   -- to avoid errors run sudo apt install g++
+  --run TSUpdateSync when having problems with tree-sitter
   ensure_installed = {
     "bash",
     "diff",
+    "go",
+    "hcl",
     "html",
-    "javascript",
     "json",
     "lua",
     "python",
     "regex",
-    "tsx",
-    "typescript",
     "vimdoc",
     "yaml",
   },
@@ -31,5 +31,3 @@ ts.setup({
     enable = true,
   },
 })
-
---run TSUpdateSync when having problems with tree-sitter

@@ -23,11 +23,11 @@ lspconfig.setup({
 	ensure_installed = {
 		"bashls",   -- bash
 		"dockerls", -- Dockerfile
-		"eslint",   -- javascript
 		"lua_ls",   -- lua
 		"pylsp",    -- pyhton
-		"ts_ls",    -- typescript
     "gopls",    -- go
 	},
 	automatic_installation = true,
 })
+
+vim.keymap.set("n", ";m", ":Mason<Return>", {silent = true})

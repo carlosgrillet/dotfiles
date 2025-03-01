@@ -1,5 +1,3 @@
---vim.lsp.set_log_level("debug")
-
 local status, nvim_lsp = pcall(require, "lspconfig")
 if not status then
 	vim.notify("Failed to load lspconfig")
@@ -25,7 +23,6 @@ local on_attach = function(client, bufnr)
 	-- Mappings.
 	local opts = { noremap = true, silent = true }
 
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references)
   vim.keymap.set('n', 'gR', vim.lsp.buf.rename)
@@ -84,12 +81,6 @@ nvim_lsp.pylsp.setup({
 			},
 		},
 	},
-})
-
-nvim_lsp.tailwindcss.setup({
-	-- npm install -g @tailwindcss/language-server
-	on_attach = on_attach,
-	capabilities = capabilities,
 })
 
 nvim_lsp.bashls.setup({
