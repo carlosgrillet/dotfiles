@@ -121,4 +121,5 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvi
 * [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim)
 * [williamboman/nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
 * [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs)
-* [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs)
+* [L3MON4D3/LuaSnip](https://github.con/L3MON4D3/LuaSnip)
+* [saadparwaiz1/cmp_luasnip](https://github.con/saadparwaiz1/cmp_luasnip)
