@@ -28,8 +28,7 @@ packer.startup({
 		use("nvim-treesitter/nvim-treesitter")      -- Parser generator
 		use("nvim-telescope/telescope.nvim")        -- High extendable fuzzy finder
 		use("windwp/nvim-autopairs")                -- Auto pair plugin
-		use("tpope/vim-surround")                   -- For operations surrounding
-		use("tpope/vim-repeat")                     -- To repeat surround operations
+		use("kylechui/nvim-surround")               -- For operations surrounding
 		use("nvim-tree/nvim-tree.lua")              -- File explorer
 		use("wakatime/vim-wakatime")                -- For time mesurement
     use("windwp/nvim-autopairs")                -- Autopair characters
