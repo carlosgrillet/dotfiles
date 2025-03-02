@@ -6,23 +6,7 @@ end
 
 local protocol = require("vim.lsp.protocol")
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
-
-	local function buf_set_option(...)
-		vim.api.nvim_buf_set_option(bufnr, ...)
-	end
-
-	--Enable completion triggered by <c-x><c-o>
-	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-	-- Mappings.
-	local opts = { noremap = true, silent = true }
-
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references)
   vim.keymap.set('n', 'gR', vim.lsp.buf.rename)
@@ -55,12 +39,30 @@ protocol.CompletionItemKind = {
 }
 
 -- Set up completion using nvim_cmp with LSP source
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 nvim_lsp.lua_ls.setup({
 	-- on Windows run:  scoop install lua-language-server
 	on_attach = on_attach,
 	capabilities = capabilities,
+  on_init = function(client)
+    if client.workspace_folders then
+      local path = client.workspace_folders[1].name
+      if path ~= vim.fn.stdpath('config') and (vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc')) then
+        return
+      end
+    end
+
+    client.config.settings.Lua = vim.tbl_deep_extend('force',
+      client.config.settings.Lua, {
+        runtime = { version = 'LuaJIT' },
+        workspace = { checkThirdParty = false, library = { vim.env.VIMRUNTIME }
+      }
+    })
+  end,
+  settings = {
+    Lua = {}
+  }
 })
 
 nvim_lsp.dockerls.setup({
