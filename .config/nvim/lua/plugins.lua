@@ -23,6 +23,8 @@ packer.startup({
 		use("hrsh7th/nvim-cmp")                     -- Completion
 		use("hrsh7th/cmp-buffer")                   -- nvim-cmp source for buffer words
 		use("hrsh7th/cmp-nvim-lsp")                 -- nvim-cmp source for neovim's built-in LSP
+    use("L3MON4D3/LuaSnip")                     -- Snipet engine for nvim
+    use("saadparwaiz1/cmp_luasnip")             -- Snipet engine for nvim
 
 		-- Nvim tools
 		use("nvim-treesitter/nvim-treesitter")      -- Parser generator
@@ -31,7 +33,6 @@ packer.startup({
 		use("kylechui/nvim-surround")               -- For operations surrounding
 		use("nvim-tree/nvim-tree.lua")              -- File explorer
 		use("wakatime/vim-wakatime")                -- For time mesurement
-    use("windwp/nvim-autopairs")                -- Autopair characters
     use("lewis6991/gitsigns.nvim")              -- Buffer integration wit Git
 
 		-- Theme, colors and icons
