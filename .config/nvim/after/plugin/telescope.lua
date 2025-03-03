@@ -3,6 +3,7 @@ if not status then
 	vim.notify("Failed to load telescope")
 	return
 end
+
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
@@ -44,20 +45,23 @@ vim.keymap.set("n", ";f", function()
 		},
 	})
 end)
+
+vim.keymap.set("n", ";F", function()
+	builtin.git_files()
+end)
+
 vim.keymap.set("n", ";r", function()
 	builtin.live_grep() -- Ensure ripgrep binary is installed in your system
 end)
-vim.keymap.set("n", "\\\\", function()
-	builtin.buffers({
-		initial_mode = "normal",
-	})
-end)
+
 vim.keymap.set("n", ";t", function()
 	builtin.help_tags()
 end)
-vim.keymap.set("n", ";;", function()
-	builtin.resume()
-end)
-vim.keymap.set("n", ";e", function()
+
+vim.keymap.set("n", ";d", function()
 	builtin.diagnostics()
+end)
+
+vim.keymap.set("n", ";;", function()
+  builtin.resume()
 end)
