@@ -1,6 +1,6 @@
 local status, packer = pcall(require, "packer")
 if not status then
-  print("Packer is not installed")
+	vim.notify("Failed to load packer")
   return
 end
 
