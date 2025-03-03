@@ -4,7 +4,6 @@ vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
 
-vim.opt.guicursor = "n-v-c-i:Block"
 vim.opt.mouse = ""
 vim.wo.number = true
 vim.wo.relativenumber = true
@@ -50,6 +49,16 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 
 -- Add asterisks in block comments
 vim.opt.formatoptions:append { 'r' }
+
+-- Visual settings
+vim.opt.background = "dark"
+vim.opt.colorcolumn = "100"
+vim.opt.cursorline = true
+vim.opt.guicursor = "n-v-c-i:Block"
+vim.opt.pumblend = 30
+vim.opt.termguicolors = true
+vim.opt.wildoptions = "pum"
+vim.opt.winblend = 0
 
 -- Fold settings
 vim.opt.foldmethod = 'expr'
