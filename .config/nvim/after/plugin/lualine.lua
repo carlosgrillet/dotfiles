@@ -4,6 +4,15 @@ if not status then
 	return
 end
 
+local function macro_recording()
+    local recording_register = vim.fn.reg_recording()
+    if recording_register ~= "" then
+        return "REC: @" .. recording_register
+    else
+        return ""
+    end
+end
+
 lualine.setup({
 	options = {
 		icons_enabled = true,
@@ -25,8 +34,8 @@ lualine.setup({
 			"encoding",
 			"filetype",
 		},
-		lualine_y = { "progress" },
-		lualine_z = { "location" },
+    lualine_y = { "progress", { macro_recording, cond = function() return vim.fn.reg_recording() ~= "" end } },
+    lualine_z = { "location" },
 	},
 	inactive_sections = {
 		lualine_a = {},
