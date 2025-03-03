@@ -25,6 +25,7 @@ packer.startup({
 		use("hrsh7th/cmp-nvim-lsp")                 -- nvim-cmp source for neovim's built-in LSP
     use("L3MON4D3/LuaSnip")                     -- Snipet engine for nvim
     use("saadparwaiz1/cmp_luasnip")             -- Snipet engine for nvim
+    use("zbirenbaum/copilot.lua")               -- GitHub copilot completion
 
 		-- Nvim tools
 		use("nvim-treesitter/nvim-treesitter")      -- Parser generator
