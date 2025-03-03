@@ -10,6 +10,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references)
   vim.keymap.set('n', 'gR', vim.lsp.buf.rename)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.hover)
 end
 
 protocol.CompletionItemKind = {
