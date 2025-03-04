@@ -1,6 +1,7 @@
 local status, lint = pcall(require, "lint")
 if not status then
 	vim.notify("Failed to load lint")
+	vim.notify("Failed to load nvim-lint")
 	return
 end
 
