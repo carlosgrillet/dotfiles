@@ -8,7 +8,7 @@ lint.linters_by_ft = {
   python = {"pylint"},
 }
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   callback = function()
     lint.try_lint()
   end,
