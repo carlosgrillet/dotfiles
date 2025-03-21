@@ -7,7 +7,7 @@ end
 copilot.setup({
   panel = { enabled = false, },
   suggestion = {
-    auto_trigger = true,
+    auto_trigger = false,
     keymap = {
       accept = "<C-CR>"
     }
