@@ -71,6 +71,10 @@ noice.setup({
         width = "auto",
         height = "auto",
       },
+      border = {
+        style = "rounded",
+        padding = { 0, 0 },
+      },
       win_options = {
         winhighlight = "Normal:TelescopePromptNormal,FloatBorder:TelescopePromptBorder",
       },

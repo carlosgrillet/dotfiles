@@ -3,17 +3,20 @@ if not status then
 	vim.notify("Failed to load cmp")
 	return
 end
+
+local compare = require("cmp.config.compare")
 local lspkind = require("lspkind")
+local luasnip = require("luasnip")
 
 cmp.setup({
+  preselect = false,
 	snippet = {
 		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
+			luasnip.lsp_expand(args.body)
 		end,
 	},
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+  completion = {
+    completeopt = 'menu,menuone,noselect',
   },
 	mapping = cmp.mapping.preset.insert({
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -34,9 +37,25 @@ cmp.setup({
   formatting = {
 	  format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
 	},
+  sorting = {
+    comparators = {
+      compare.offset,
+      compare.exact,
+      compare.score,
+      compare.sort_text,
+      compare.kind,
+      compare.length,
+      compare.order,
+    },
+  },
+  window = {
+    completion = {
+      border = "rounded",
+      winhighlight = 'Normal:TelescopePromptNormal,FloatBorder:TelescopePromptBorder,CursorLine:PmenuSel,Search:None',
+    },
+    documentation = {
+      border = "rounded",
+      winhighlight = 'FloatBorder:TelescopePromptBorder',
+    }
+  }
 })
-
-vim.cmd([[
-  set completeopt=menuone,noinsert,noselect
-  highlight! default link CmpItemKind CmpItemMenuDefault
-]])
