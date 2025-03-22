@@ -7,10 +7,10 @@ end
 local protocol = require("vim.lsp.protocol")
 
 local on_attach = function(client, bufnr)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references)
-  vim.keymap.set('n', 'gR', vim.lsp.buf.rename)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.hover)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "LSP Jump to definition" })
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "LSP See references" })
+  vim.keymap.set('n', 'gR', vim.lsp.buf.rename, { desc = "LSP Rename" })
+  vim.keymap.set('n', 'gi', vim.lsp.buf.hover, { desc = "LSP Hover" })
 end
 
 protocol.CompletionItemKind = {
@@ -112,13 +112,12 @@ nvim_lsp.gopls.setup {
   },
 }
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	underline = true,
-	update_in_insert = false,
-	virtual_text = { spacing = 4, prefix = "●" },
-	severity_sort = true,
-})
-
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = "rounded",
+    title = "hover"
+  }
+)
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = "x ", Warn = " ", Hint = "! ", Info = " " }
 for type, icon in pairs(signs) do
@@ -132,6 +131,6 @@ vim.diagnostic.config({
 	},
 	update_in_insert = true,
 	float = {
-		source = "always", -- Or "if_many"
+		source = true, -- Or "if_many"
 	},
 })
