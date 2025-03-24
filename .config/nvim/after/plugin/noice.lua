@@ -14,7 +14,7 @@ noice.setup({
       search_up = { kind = "search", pattern = "^%?", icon = "", lang = "regex", title = " Search Up "},
       filter = { pattern = {"^:%s*!", "^:%s*r!"}, icon = "", lang = "bash", title = " Shell " },
       lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "󰢱", lang = "lua" },
-      help = { pattern = {"^:%s*he?l?p?%s+", "^:%s*?%s+"}, icon = "󱔘" },
+      help = { pattern = {"^:%s*he?l?p?%s+", "^:%s*%?"}, icon = "󱔘" },
       input = { view = "cmdline_input", icon = "󰩮" },
     },
   },
