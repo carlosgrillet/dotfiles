@@ -52,7 +52,7 @@ vim.opt.formatoptions:append { 'r' }
 
 -- Visual settings
 vim.opt.background = "dark"
-vim.opt.colorcolumn = "100"
+vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.guicursor = "n-v-c-i:Block"
 vim.opt.pumblend = 30
