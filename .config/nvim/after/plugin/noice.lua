@@ -49,7 +49,7 @@ noice.setup({
         col = "50%",
       },
       size = {
-        width = "40%",
+        width = "33%",
         height = "auto",
       },
       border = {
