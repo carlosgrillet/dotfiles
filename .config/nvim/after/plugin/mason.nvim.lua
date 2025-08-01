@@ -24,7 +24,7 @@ lspconfig.setup({
 		"bashls",   -- bash
 		"dockerls", -- Dockerfile
 		"lua_ls",   -- lua
-		"pylsp",    -- pyhton
+		-- "pylsp",    -- pyhton
     "gopls",    -- go
 	},
 	automatic_installation = true,

@@ -45,3 +45,5 @@ keymap("i", "<C-h>", "<Esc>Bi")
 keymap("i", "<C-j>", "<Esc>o")
 keymap("i", "<C-k>", "<Esc>O")
 keymap("i", "<C-l>", "<Esc>Wi")
+-- Map scape for terminal mode
+keymap("t", "<Esc>", "<C-\\><C-n>")

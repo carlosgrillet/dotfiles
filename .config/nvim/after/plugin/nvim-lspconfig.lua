@@ -11,6 +11,9 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "LSP See references" })
   vim.keymap.set('n', 'gR', vim.lsp.buf.rename, { desc = "LSP Rename" })
   vim.keymap.set('n', 'gi', vim.lsp.buf.hover, { desc = "LSP Hover" })
+  vim.keymap.set('n', '<leader>d', function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+  end, { silent = true, noremap = true })
 end
 
 protocol.CompletionItemKind = {
@@ -72,19 +75,19 @@ nvim_lsp.dockerls.setup({
 	capabilities = capabilities,
 })
 
-nvim_lsp.pylsp.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		pylsp = {
-			plugins = {
-				pycodestyle = {
-					maxLineLength = 100,
-				},
-			},
-		},
-	},
-})
+-- nvim_lsp.pylsp.setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	settings = {
+-- 		pylsp = {
+-- 			plugins = {
+-- 				pycodestyle = {
+-- 					maxLineLength = 100,
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- })
 
 nvim_lsp.bashls.setup({
 	-- npm install -g bash-language-server
