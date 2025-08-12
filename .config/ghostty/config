@@ -1,0 +1,11 @@
+background = #031219
+background-blur-radius = 20
+background-opacity = 0.9
+copy-on-select = clipboard
+cursor-color = ""
+font-family = "Hack Nerd Font"
+font-size = 18
+title = "Ghost in the Shell"
+theme = "Brogrammer"
+window-height = 50
+window-width = 160
