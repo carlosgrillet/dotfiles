@@ -45,7 +45,7 @@ protocol.CompletionItemKind = {
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-nvim_lsp.lua_ls.setup({
+vim.lsp.lua_ls.setup({
 	-- on Windows run:  scoop install lua-language-server
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -69,25 +69,22 @@ nvim_lsp.lua_ls.setup({
   }
 })
 
+nvim_lsp.ruff.setup {
+  init_options = {
+    settings = {
+      lineLength = 79,
+      lint = {
+        ignore = {"E4", "E7"}
+      }
+    }
+  }
+}
+
 nvim_lsp.dockerls.setup({
 	-- on windows run: npm install -g dockerfile-language-server-nodejs
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
-
--- nvim_lsp.pylsp.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- 	settings = {
--- 		pylsp = {
--- 			plugins = {
--- 				pycodestyle = {
--- 					maxLineLength = 100,
--- 				},
--- 			},
--- 		},
--- 	},
--- })
 
 nvim_lsp.bashls.setup({
 	-- npm install -g bash-language-server
@@ -114,6 +111,16 @@ nvim_lsp.gopls.setup {
     },
   },
 }
+
+nvim_lsp.rust_analyzer.setup({
+  settings = {
+    ["rust-analyzer"] = {
+      checkOnSave = { command = "clippy" },
+      cargo = { loadOutDirsFromCheck = true },
+      procMacro = { enable = true },
+    },
+  },
+})
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   vim.lsp.handlers.hover, {
