@@ -45,7 +45,7 @@ protocol.CompletionItemKind = {
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-vim.lsp.lua_ls.setup({
+nvim_lsp.lua_ls.setup({
 	-- on Windows run:  scoop install lua-language-server
 	on_attach = on_attach,
 	capabilities = capabilities,
