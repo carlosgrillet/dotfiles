@@ -16,6 +16,7 @@ packer.startup({
     use("kylechui/nvim-surround")               -- For operations surrounding
     use("wakatime/vim-wakatime")                -- For time mesurement
     use("lewis6991/gitsigns.nvim")              -- Buffer integration wit Git
+    use("nvim-treesitter/nvim-treesitter")      -- Parser generator * require GCC
 
     -- Theme, colors and icons
     use("nvim-lualine/lualine.nvim")            -- Statusline
