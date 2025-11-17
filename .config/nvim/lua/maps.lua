@@ -1,49 +1,49 @@
-local keymap = vim.keymap.set
+local map = vim.keymap.set
 
 -- Delete character without yank
-keymap("n", "x", '"_x')
+map("n", "x", '"_x')
 -- Split window
-keymap("n", "ss", ":new<Return>", { silent = true })
-keymap("n", "sv", ":vnew<Return>", { silent = true })
+map("n", "ss", ":new<Return>", { silent = true })
+map("n", "sv", ":vnew<Return>", { silent = true })
 -- Move window
-keymap("n", "<Space>", "<C-w>w")
-keymap("", "sh", "<C-w>h")
-keymap("", "sk", "<C-w>k")
-keymap("", "sj", "<C-w>j")
-keymap("", "sl", "<C-w>l")
+map("n", "<Space>", "<C-w>w")
+map("", "sh", "<C-w>h")
+map("", "sk", "<C-w>k")
+map("", "sj", "<C-w>j")
+map("", "sl", "<C-w>l")
 -- Resize window
-keymap("n", "<C-w><left>", "<C-w><")
-keymap("n", "<C-w><right>", "<C-w>>")
-keymap("n", "<C-w><up>", "<C-w>+")
-keymap("n", "<C-w><down>", "<C-w>-")
+map("n", "<C-w><left>", "<C-w><")
+map("n", "<C-w><right>", "<C-w>>")
+map("n", "<C-w><up>", "<C-w>+")
+map("n", "<C-w><down>", "<C-w>-")
 -- Move the selected lines
-keymap("v", "J", ":m '>+1<CR>gv=gv")
-keymap("v", "K", ":m '<-2<CR>gv=gv")
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
 -- Keep the cursor in the center when searching
-keymap("n", "n", "nzzzv")
-keymap("n", "N", "Nzzzv")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
 -- Keep the cursor in the center when moving
-keymap("n", "<C-d>", "<C-d>zz")
-keymap("n", "<C-u>", "<C-u>zz")
-keymap("n", "}", "}zz")
-keymap("n", "{", "{zz")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "}", "}zz")
+map("n", "{", "{zz")
 -- Keep curson in the cneter when jumping
-keymap("n", "<C-o>", "<C-o>zz")
-keymap("n", "`.", "`.zz")
+map("n", "<C-o>", "<C-o>zz")
+map("n", "`.", "`.zz")
 -- Keep curson in the center at the end of the file
-keymap("n", "G", "Gzz")
+map("n", "G", "Gzz")
 -- Stay cursor when join lines
-keymap("n", "J", "mzJ`z")
+map("n", "J", "mzJ`z")
 -- Yank to the clipboard
-keymap("n", "<Leader>y", '"+y')
-keymap("v", "<Leader>y", '"+y')
-keymap("n", "<Leader>Y", '"+Y')
+map("n", "<Leader>y", '"+y')
+map("v", "<Leader>y", '"+y')
+map("n", "<Leader>Y", '"+Y')
 -- Paste from clipboard
-keymap("n", "<Leader>p", '"+gP')
+map("n", "<Leader>p", '"+gP')
 -- Add vim motions on insert mode
-keymap("i", "<C-h>", "<Esc>Bi")
-keymap("i", "<C-j>", "<Esc>o")
-keymap("i", "<C-k>", "<Esc>O")
-keymap("i", "<C-l>", "<Esc>Wi")
+map("i", "<C-h>", "<Esc>Bi")
+map("i", "<C-j>", "<Esc>o")
+map("i", "<C-k>", "<Esc>O")
+map("i", "<C-l>", "<Esc>Wi")
 -- Map scape for terminal mode
-keymap("t", "<Esc>", "<C-\\><C-n>")
+map("t", "<Esc>", "<C-\\><C-n>")

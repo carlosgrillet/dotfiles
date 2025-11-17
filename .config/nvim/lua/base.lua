@@ -9,7 +9,7 @@ vim.opt.backup = false
 vim.opt.backupskip = { '/tmp/*' }
 vim.opt.breakindent = true
 vim.opt.cmdheight = 1
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = '100'
 vim.opt.cursorline = true
 vim.opt.encoding = 'utf-8'
 vim.opt.expandtab = true
@@ -29,7 +29,7 @@ vim.opt.path:append { '**' }
 vim.opt.pumblend = 30
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = 'yes'
-vim.opt.shell = 'zsh'
+vim.opt.shell = 'bash'
 vim.opt.shiftwidth = 2
 vim.opt.showcmd = true
 vim.opt.smartindent = true
@@ -48,6 +48,7 @@ vim.opt.winblend = 0
 vim.opt.wrap = false
 vim.wo.number = true
 vim.wo.relativenumber = true
+vim.cmd("colorscheme solarized-osaka")
 
 -- Italic text
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
