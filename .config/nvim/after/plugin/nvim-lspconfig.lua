@@ -1,8 +1,8 @@
-local status, nvim_lsp = pcall(require, "lspconfig")
-if not status then
-	vim.notify("Failed to load lspconfig")
-	return
-end
+-- local status, nvim_lsp = pcall(require, "lspconfig")
+-- if not status then
+-- 	vim.notify("Failed to load lspconfig")
+-- 	return
+-- end
 
 local protocol = require("vim.lsp.protocol")
 
@@ -45,7 +45,7 @@ protocol.CompletionItemKind = {
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-nvim_lsp.lua_ls.setup({
+vim.lsp.config('lua_ls', {
 	-- on Windows run:  scoop install lua-language-server
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -69,7 +69,7 @@ nvim_lsp.lua_ls.setup({
   }
 })
 
-nvim_lsp.ruff.setup {
+vim.lsp.config('ruff', {
   init_options = {
     settings = {
       lineLength = 79,
@@ -78,27 +78,27 @@ nvim_lsp.ruff.setup {
       }
     }
   }
-}
+})
 
-nvim_lsp.dockerls.setup({
+vim.lsp.config('dockerls', {
 	-- on windows run: npm install -g dockerfile-language-server-nodejs
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
 
-nvim_lsp.bashls.setup({
+vim.lsp.config('bashls', {
 	-- npm install -g bash-language-server
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
 
-nvim_lsp.gopls.setup {
+vim.lsp.config('gopls', {
   -- go install golang.org/x/tools/gopls@latest
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {"gopls"},
   filetypes = {"go", "gomod", "gowork", "gotmpl"},
-  root_dir = nvim_lsp.util.root_pattern("go.work", "go.mod", ".git"),
+  root_dir = vim.lsp.client.root_dir,
   settings = {
     gopls = {
       completeUnimported = true,
@@ -110,9 +110,9 @@ nvim_lsp.gopls.setup {
       },
     },
   },
-}
+})
 
-nvim_lsp.rust_analyzer.setup({
+vim.lsp.config('rust_analyzer', {
   settings = {
     ["rust-analyzer"] = {
       checkOnSave = { command = "clippy" },

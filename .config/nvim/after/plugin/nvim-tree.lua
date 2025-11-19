@@ -5,7 +5,7 @@ if not status then
 end
 
 nvim_tree.setup({
-	disable_netrw = true,
+	disable_netrw = false,
 	hijack_netrw = true,
 	open_on_tab = false,
 	hijack_cursor = true,
