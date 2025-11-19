@@ -69,15 +69,25 @@ vim.lsp.config('lua_ls', {
   }
 })
 
-vim.lsp.config('ruff', {
-  init_options = {
-    settings = {
-      lineLength = 79,
-      lint = {
-        ignore = {"E4", "E7"}
-      }
-    }
+vim.lsp.config('pyright', {
+	on_attach = on_attach,
+	capabilities = capabilities,
+  filetypes = {"python"},
+  settings = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        ignore = { "*" },
+      },
+    },
   }
+})
+
+vim.lsp.config('ruff', {
+	on_attach = on_attach,
+	capabilities = capabilities,
 })
 
 vim.lsp.config('dockerls', {
