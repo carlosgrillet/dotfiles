@@ -46,4 +46,13 @@ keymap("i", "<C-j>", "<Esc>o")
 keymap("i", "<C-k>", "<Esc>O")
 keymap("i", "<C-l>", "<Esc>Wi")
 -- Map scape for terminal mode
-keymap("t", "<Esc>", "<C-\\><C-n>")
+keymap("t", "<Esc><Esc>", "<C-\\><C-n>")
+-- Return to start point on leave visual
+vim.api.nvim_create_autocmd("ModeChanged", {
+  pattern = "n:V,v:V,s:V",
+  callback = function()
+    vim.cmd([[normal! mV]])
+  end,
+})
+
+vim.keymap.set("x", "<Esc>", "<Esc>`V", { silent = true })
