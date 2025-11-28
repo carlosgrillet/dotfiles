@@ -55,4 +55,6 @@ vim.api.nvim_create_autocmd("ModeChanged", {
   end,
 })
 
-vim.keymap.set("x", "<Esc>", "<Esc>`V", { silent = true })
+keymap("x", "<Esc>", "<Esc>`V", { silent = true })
+-- Make my life better in Go
+keymap("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
