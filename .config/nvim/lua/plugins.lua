@@ -28,6 +28,7 @@ packer.startup({
 
     -- Nvim tools
     use("nvim-treesitter/nvim-treesitter")      -- Parser generator
+    use("nvim-treesitter/nvim-treesitter-textobjects")
     use("ibhagwan/fzf-lua")                     -- Faster Fuzzy Finder
     use("windwp/nvim-autopairs")                -- Auto pair plugin
     use("kylechui/nvim-surround")               -- For operations surrounding
