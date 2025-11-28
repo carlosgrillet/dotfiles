@@ -45,6 +45,7 @@ vim.opt.undofile = true
 vim.opt.wildignore:append { '*/node_modules/*', '*/.git/*' }
 vim.opt.wildoptions = 'pum'
 vim.opt.winblend = 0
+vim.opt.winborder = "rounded"
 vim.opt.wrap = false
 vim.wo.number = true
 vim.wo.relativenumber = true
