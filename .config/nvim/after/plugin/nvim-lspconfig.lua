@@ -140,6 +140,19 @@ vim.lsp.config('clangd', {
   capabilities = capabilities,
 })
 
+vim.lsp.config('terraformls', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'terraform', 'tf', 'hcl', 'tfvars'},
+  cmd = {'terraform-ls', 'serve'}
+})
+
+vim.lsp.config('tflint', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'terraform', 'tf', 'hcl', 'tfvars'},
+})
+
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = "x ", Warn = " ", Hint = "! ", Info = " " }
 for type, icon in pairs(signs) do

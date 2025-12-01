@@ -24,6 +24,7 @@ ts.setup({
     "lua",
     "python",
     "regex",
+    "terraform",
     "vimdoc",
     "yaml",
   },

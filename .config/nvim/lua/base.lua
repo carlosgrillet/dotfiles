@@ -59,11 +59,3 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   pattern = '*',
   command = "set nopaste"
 })
-
--- Set filetype to HCL for .tf extensions
-vim.api.nvim_create_autocmd("BufRead", {
-  pattern = {"*.tf"},
-  callback = function()
-    vim.bo.filetype = "hcl"
-  end
-})
