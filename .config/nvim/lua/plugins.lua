@@ -27,7 +27,7 @@ packer.startup({
     use("saadparwaiz1/cmp_luasnip")             -- Snipet engine for nvim
 
     -- Nvim tools
-    use("nvim-treesitter/nvim-treesitter")      -- Parser generator
+    use({"nvim-treesitter/nvim-treesitter", branch = "master"})      -- Parser generator
     use("nvim-treesitter/nvim-treesitter-textobjects")
     use("ibhagwan/fzf-lua")                     -- Faster Fuzzy Finder
     use("windwp/nvim-autopairs")                -- Auto pair plugin
