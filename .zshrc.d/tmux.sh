@@ -1,4 +1,8 @@
 create_tmux_session() {
+  if ! [[ -x /usr/bin/tmux ]]; then
+    echo "please install tmux"
+    return 0
+  fi
   # Parameters: session_name, base_path, window_configs
   local session_name="$1"
   local base_path="$2"
@@ -31,7 +35,7 @@ create_tmux_session() {
 
 tmoperator() {
   create_tmux_session "operator" \
-    "$HOME/github/nso-operator" \
+    "/github/nso-operator" \
     "CODE:nvim" \
 }
 tmoperator
