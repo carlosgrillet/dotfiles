@@ -53,3 +53,5 @@ keymap("x", "<Esc>", "<Esc>`V", { silent = true })
 keymap("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
 -- Toggle spell check
 keymap('n', '<leader>pp', ':set spell!<CR>', { silent = true})
+-- Close current buffer and go to a new one
+keymap('n', '<leader>qq', ':enew<bar>bd #<CR>b', { silent = true})
