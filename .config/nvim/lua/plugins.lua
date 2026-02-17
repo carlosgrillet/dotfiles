@@ -45,6 +45,7 @@ packer.startup({
     use("rcarriga/nvim-notify")                 -- Required by noice
     use("kyazdani42/nvim-web-devicons")         -- Icons
     use("onsails/lspkind-nvim")                 -- VSCode like pictograms for LSP
+    use("sindrets/diffview.nvim")               -- Diff view tool
 
   end,
   config = {
