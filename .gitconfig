@@ -2,14 +2,28 @@
   name = Carlos Grillet
   email = carlos@email.com
   signingkey = ~/.ssh/id_rsa.pub
+[log]
+  abbrevCommit = true
+[color "decorate"]
+  HEAD = red
+[pretty]
+  compact = format:%C(bold blue)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(dim white)%an%C(reset)%C(bold red)%d%C(reset) %C(white)%n%s%n%C(reset)
 [alias]
-  l = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
   s = status --short
+  l = log --graph --pretty=compact --all
+  ls = log --graph --pretty=compact --all --stat
 [init]
   defaultBranch = main
 [pull]
   rebase = true
+  default = current
+[push]
+  autoSetupRemote = true
+  default = current
+  followTags = true
 [gpg]
   format = ssh
 [commit]
-  gpgsign = true
+  gpgSign = true
+[tag]
+  gpgSign = true
