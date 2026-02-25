@@ -12,3 +12,15 @@ vim.api.nvim_create_autocmd("ModeChanged", {
     vim.api.nvim_buf_set_mark(0, "V", pos[1], pos[2], {})
   end,
 })
+
+-- Set fold method
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    if require("nvim-treesitter.parsers").has_parser() then
+      vim.opt.foldmethod = "expr"
+      vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+    else
+      vim.opt.foldmethod = "syntax"
+    end
+  end,
+})
