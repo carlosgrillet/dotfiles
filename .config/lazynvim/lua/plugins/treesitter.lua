@@ -12,6 +12,7 @@ return {
         disable = {},
       },
       ensure_installed = {
+        "asm",
         "bash",
         "c",
         "cmake",

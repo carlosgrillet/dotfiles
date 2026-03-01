@@ -121,6 +121,14 @@ vim.lsp.config("clangd", {
 })
 vim.lsp.enable("clangd")
 
+vim.lsp.config("asm_lsp", {
+  on_attach = on_attach,
+  filetypes = { "asm" },
+  cmd = { "asm-lsp" },
+})
+vim.lsp.enable("asm_lsp")
+
+
 vim.lsp.config("terraformls", {
   on_attach = on_attach,
   filetypes = { "terraform", "tf", "hcl", "tfvars" },
