@@ -21,7 +21,8 @@ return {
         "lua_ls",
         "pyright",
         "ruff",
-        "terraformls"
+        "terraformls",
+        "rust_analyzer",
       }
     }
   },

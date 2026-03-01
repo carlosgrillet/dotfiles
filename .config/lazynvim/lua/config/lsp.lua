@@ -12,7 +12,8 @@ end
 vim.lsp.config("lua_ls", {
   -- on Windows run:  scoop install lua-language-server
   on_attach = on_attach,
-  capabilities = capabilities,
+  cmd = { "lua-language-server" },
+  filetypes = { "lua" },
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
@@ -37,7 +38,6 @@ vim.lsp.enable("lua_ls")
 vim.lsp.config("gopls", {
   -- go install golang.org/x/tools/gopls@latest
   on_attach = on_attach,
-  capabilities = capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_dir = vim.lsp.client.root_dir,
@@ -55,18 +55,14 @@ vim.lsp.config("gopls", {
 })
 vim.lsp.enable("gopls")
 
-vim.lsp.config("ruff", { on_attach = on_attach, capabilities = capabilities, })
 vim.lsp.enable("ruff")
 
-vim.lsp.config("dockerls", { on_attach = on_attach, capabilities = capabilities, })
 vim.lsp.enable("dockerls")
 
-vim.lsp.config("bashls", { on_attach = on_attach, capabilities = capabilities, })
 vim.lsp.enable("bashls")
 
 vim.lsp.config("pyright", {
   on_attach = on_attach,
-  capabilities = capabilities,
   filetypes = { "python" },
   settings = {
     pyright = {
@@ -81,22 +77,39 @@ vim.lsp.config("pyright", {
 })
 vim.lsp.enable("pyright")
 
-vim.lsp.config('rust_analyzer', {
+vim.lsp.config("rust_analyzer", {
   on_attach = on_attach,
-  capabilities = capabilities,
+  filetypes = { "rust" },
+  root_dir = vim.lsp.client.root_dir,
+  cmd = { "rust-analyzer" },
   settings = {
     ["rust-analyzer"] = {
-      checkOnSave = { command = "clippy" },
-      cargo = { loadOutDirsFromCheck = true },
-      procMacro = { enable = true },
+      cargo = {
+        allFeatures = true,
+        loadOutDirsFromCheck = true,
+        runBuildScripts = true,
+      },
+      -- Add clippy lints for Rust.
+      checkOnSave = {
+        allFeatures = true,
+        command = "clippy",
+        extraArgs = { "--no-deps" },
+      },
+      procMacro = {
+        enable = false,
+        ignored = {
+          ["async-trait"] = { "async_trait" },
+          ["napi-derive"] = { "napi" },
+          ["async-recursion"] = { "async_recursion" },
+        },
+      },
     },
-  },
+  }
 })
 vim.lsp.enable("rust_analyzer")
 
 vim.lsp.config("clangd", {
   on_attach = on_attach,
-  capabilities = capabilities,
   filetypes = { "c", "cpp" },
   cmd = {
     "clangd",
@@ -110,9 +123,8 @@ vim.lsp.enable("clangd")
 
 vim.lsp.config("terraformls", {
   on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "terraform", "tf", "hcl", "tfvars"},
-  cmd = {"terraform-ls", "serve"}
+  filetypes = { "terraform", "tf", "hcl", "tfvars" },
+  cmd = { "terraform-ls", "serve" }
 })
 vim.lsp.enable("clangd")
 
