@@ -23,13 +23,14 @@ return {
         "lua",
         "python",
         "regex",
+        "rust",
         "terraform",
         "vimdoc",
         "yaml",
       },
-      autotag = {
-        enable = true,
-      },
+      -- autotag = {
+      --   enable = true,
+      -- },
       textobjects = {
         select = {
           enable = true,
