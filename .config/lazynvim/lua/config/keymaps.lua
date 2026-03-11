@@ -5,6 +5,8 @@ keymap("n", "x", '"_x')
 -- Split window
 keymap("n", "ss", ":new<Return>", { silent = true })
 keymap("n", "sv", ":vnew<Return>", { silent = true })
+keymap("n", "tt", ":new<Return>:term<Return>", { silent = true })
+keymap("n", "tv", ":vnew<Return>:term<Return>", { silent = true })
 -- Move window
 keymap("n", "<Space>", "<C-w>w")
 keymap("", "sh", "<C-w>h")
