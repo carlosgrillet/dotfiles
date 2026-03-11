@@ -96,7 +96,7 @@ vim.lsp.config("rust_analyzer", {
         extraArgs = { "--no-deps" },
       },
       procMacro = {
-        enable = false,
+        enable = true,
         ignored = {
           ["async-trait"] = { "async_trait" },
           ["napi-derive"] = { "napi" },
