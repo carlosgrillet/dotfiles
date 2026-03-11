@@ -30,7 +30,7 @@ vim.opt.mouse = ""
 vim.opt.path:append { "**" }
 vim.opt.pumblend = 0
 vim.opt.scrolloff = 8
-vim.opt.shell = "bash"
+vim.opt.shell = "zsh"
 vim.opt.shiftwidth = 2
 vim.opt.shortmess:append("I")
 vim.opt.showcmd = true
