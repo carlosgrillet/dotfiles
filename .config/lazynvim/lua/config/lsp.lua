@@ -87,21 +87,29 @@ vim.lsp.config("rust_analyzer", {
       cargo = {
         allFeatures = true,
         loadOutDirsFromCheck = true,
-        runBuildScripts = true,
       },
-      -- Add clippy lints for Rust.
       checkOnSave = {
-        allFeatures = true,
         command = "clippy",
         extraArgs = { "--no-deps" },
       },
       procMacro = {
         enable = true,
-        ignored = {
-          ["async-trait"] = { "async_trait" },
-          ["napi-derive"] = { "napi" },
-          ["async-recursion"] = { "async_recursion" },
-        },
+      },
+      inlayHints = {
+        bindingModeHints = { enable = true },
+        chainingHints = { enable = true },
+        closingBraceHints = { enable = true, minLines = 10 },
+        closureReturnTypeHints = { enable = "always" },
+        parameterHints = { enable = true },
+        typeHints = { enable = true },
+      },
+      diagnostics = {
+        enable = true,
+        experimental = { enable = true },
+      },
+      imports = {
+        granularity = { group = "module" },
+        prefix = "self",
       },
     },
   }
