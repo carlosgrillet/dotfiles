@@ -6,6 +6,16 @@ return {
       files = {
         cwd_prompt= false,
         git_icons = true,
+        fd_opts = "--color=never --type f --hidden --follow"
+          .. " --exclude .git"
+          .. " --exclude target"
+          .. " --exclude '*.lock'",
+      },
+      grep = {
+        rg_opts = "--column --line-number --no-heading --color=always --smart-case"
+          .. " --glob '!.git'"
+          .. " --glob '!target'"
+          .. " --glob '!*.lock'",
       },
 	  },
     keys = {
