@@ -1,4 +1,4 @@
-local on_attach = function(client, bufnr)
+local on_attach = function(_, _)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "LSP Jump to definition" })
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "LSP See references" })
   vim.keymap.set('n', 'gR', vim.lsp.buf.rename, { desc = "LSP Rename" })
