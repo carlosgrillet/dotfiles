@@ -150,18 +150,30 @@ vim.lsp.config("terraformls", {
 vim.lsp.enable("clangd")
 
 -- Diagnostic symbols in the sign column (gutter)
--- local signs = { Error = "x ", Warn = " ", Hint = "! ", Info = " " }
--- for type, icon in pairs(signs) do
---   local hl = "DiagnosticSign" .. type
---   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
--- end
+local signs = {
+  [vim.diagnostic.severity.ERROR] = { icon = " ", hl = "Error" },
+  [vim.diagnostic.severity.WARN]  = { icon = " ", hl = "Warn" },
+  [vim.diagnostic.severity.INFO]  = { icon = " ", hl = "Info" },
+  [vim.diagnostic.severity.HINT]  = { icon = "󰋗 ", hl = "Hint" },
+}
+
+local text = {}
+
+for severity, config in pairs(signs) do
+  text[severity] = config.icon
+end
 
 vim.diagnostic.config({
-  virtual_text = {
-    prefix = "●",
+  signs = {
+    text = text,
   },
+  -- virtual_text = { -- disabled for now, too much text on the screen
+  --   prefix = "●",
+  -- },
   update_in_insert = true,
   float = {
+    border = "rounded",
     source = true, -- Or "if_many"
+    max_width = 78,
   },
 })
