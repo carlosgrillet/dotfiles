@@ -1,3 +1,6 @@
+-- Save on W
+vim.api.nvim_create_user_command('W', 'w', { nargs = 0 })
+
 -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd("InsertLeave", {
   pattern = '*',

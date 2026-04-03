@@ -53,3 +53,22 @@ gitsigns.setup {
     col = 1
   },
 }
+
+vim.keymap.set('n', 'sh', function()
+  gitsigns.stage_hunk()
+end)
+vim.keymap.set('n', 'rh', function()
+  gitsigns.reset_hunk()
+end)
+vim.keymap.set('n', 'ph', function()
+  gitsigns.preview_hunk()
+end)
+vim.keymap.set('n', ';h', function()
+  gitsigns.next_hunk()
+  vim.defer_fn(function()
+    vim.cmd('normal! zz')
+  end, 20)
+end)
+vim.keymap.set('n', 'gb', function()
+  gitsigns.blame_line()
+end)
