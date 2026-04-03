@@ -4,3 +4,5 @@
 .config/ookla/
 .config/nvim/plugin/packer_compiled.lua
 .DS_Store
+
+**/lazy-lock.json
