@@ -119,40 +119,105 @@ vim.lsp.config('gopls', {
 
 vim.lsp.config('rust_analyzer', {
   on_attach = on_attach,
-  capabilities = capabilities,
+  filetypes = { "rust" },
+  root_dir = vim.lsp.client.root_dir,
+  cmd = { "rust-analyzer" },
   settings = {
     ["rust-analyzer"] = {
-      checkOnSave = { command = "clippy" },
-      cargo = { loadOutDirsFromCheck = true },
-      procMacro = { enable = true },
+      cargo = {
+        allFeatures = true,
+        loadOutDirsFromCheck = true,
+      },
+      checkOnSave = {
+        command = "clippy",
+        extraArgs = { "--no-deps" },
+        allFeatures = true,
+      },
+      procMacro = {
+        enable = true,
+      },
+      inlayHints = {
+        bindingModeHints = { enable = true },
+        chainingHints = { enable = true },
+        closingBraceHints = { enable = true, minLines = 25 },
+        closureReturnTypeHints = { enable = "always" },
+        expressionAdjustmentHints = { enable = "always" },
+        lifetimeElisionHints = { enable = "always", useParameterNames = true, },
+        parameterHints = { enable = true },
+        typeHints = { enable = true },
+      },
+      diagnostics = {
+        enable = true,
+        style = "ide",
+        experimental = { enable = true },
+      },
+      imports = {
+        granularity = { group = "module" },
+        prefix = "self",
+      },
     },
-  },
+  }
 })
 
 vim.lsp.config('clangd', {
   on_attach = on_attach,
   capabilities = capabilities,
+
+  cmd = {
+    "clangd",
+    "--compile-commands-dir=.",
+    "--fallback-style=none",
+    "--background-index",
+    "--background-index-priority=low",
+    "--header-insertion=never",
+    "--clang-tidy",
+    "--completion-style=detailed",
+    "--function-arg-placeholders=0",
+    "--pch-storage=memory",
+    "--log=error",
+    "-j=4",
+  },
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+  root_markers = {
+    "compile_commands.json",
+    ".clangd",
+    ".git",
+    "Makefile",
+    "Kbuild",
+  },
+  settings = {
+    clangd = {
+      inlayHints = {
+        enable = true,
+        parameterNames = true,
+        deducedTypes = true,
+      },
+    },
+  },
+  flags = {
+    debounce_text_changes = 300,
+  },
 })
 
 vim.lsp.config('terraformls', {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { 'terraform', 'tf', 'hcl', 'tfvars'},
-  cmd = {'terraform-ls', 'serve'}
+  filetypes = { 'terraform', 'tf', 'hcl', 'tfvars' },
+  cmd = { 'terraform-ls', 'serve' }
 })
 
 vim.lsp.config('tflint', {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { 'terraform', 'tf', 'hcl', 'tfvars'},
+  filetypes = { 'terraform', 'tf', 'hcl', 'tfvars' },
 })
 
 -- Diagnostic symbols in the sign column (gutter)
-local signs = { Error = "x ", Warn = " ", Hint = "! ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
+-- local signs = { Error = "x ", Warn = " ", Hint = "! ", Info = " " }
+-- for type, icon in pairs(signs) do
+--   local hl = "DiagnosticSign" .. type
+--   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+-- end
 
 vim.diagnostic.config({
   virtual_text = {
