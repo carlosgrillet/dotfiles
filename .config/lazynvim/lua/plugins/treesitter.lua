@@ -1,67 +1,62 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
     build = ":TSUpdate",
-    opts = {
-      highlight = {
-        enable = true,
-      },
-      indent = {
-        enable = true,
-        disable = {},
-      },
-      ensure_installed = {
-        "asm",
-        "bash",
-        "c",
-        "cmake",
-        "diff",
-        "go",
-        "hcl",
-        "html",
-        "json",
-        "lua",
-        "python",
-        "regex",
-        "rust",
-        "terraform",
-        "vimdoc",
-        "yaml",
-      },
-      -- autotag = {
-      --   enable = true,
-      -- },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ["if"] = "@function.inner",
-            ["af"] = "@function.outer",
-            ["io"] = "@class.inner",
-            ["ao"] = "@class.outer",
-            ["il"] = "@loop.inner",
-            ["al"] = "@loop.outer",
-            ["ic"] = "@conditional.inner",
-            ["ac"] = "@conditional.outer",
-            ["ib"] = "@block.inner",
-            ["ab"] = "@block.outer",
-          },
+    config = function()
+      require("nvim-treesitter").setup({
+        ensure_installed = {
+          "asm",
+          "bash",
+          "c",
+          "cmake",
+          "diff",
+          "go",
+          "hcl",
+          "html",
+          "json",
+          "lua",
+          "python",
+          "regex",
+          "rust",
+          "terraform",
+          "vimdoc",
+          "yaml",
         },
-      }
-    },
-    config = function(_, opts)
-      local TS = require("nvim-treesitter.configs")
-      -- vim.api.nvim_create_autocmd("FileType", {
-      --   pattern = opts.ensure_installed,
-      --   callback = function() vim.treesitter.start() end,
-      -- })
-      TS.setup(opts)
+      })
+
+      -- Enable treesitter highlighting for languages without built-in support
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
+
+      -- Textobjects (requires nvim-treesitter-textobjects on main branch)
+      local ts_ok, textobjects = pcall(require, "nvim-treesitter-textobjects")
+      if ts_ok then
+        textobjects.setup({
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ["if"] = "@function.inner",
+              ["af"] = "@function.outer",
+              ["io"] = "@class.inner",
+              ["ao"] = "@class.outer",
+              ["il"] = "@loop.inner",
+              ["al"] = "@loop.outer",
+              ["ic"] = "@conditional.inner",
+              ["ac"] = "@conditional.outer",
+              ["ib"] = "@block.inner",
+              ["ab"] = "@block.outer",
+            },
+          },
+        })
+      end
     end,
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      branch = "master"
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
     },
   }
 }

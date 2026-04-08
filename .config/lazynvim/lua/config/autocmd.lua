@@ -13,12 +13,12 @@ vim.api.nvim_create_autocmd("ModeChanged", {
   end,
 })
 
--- Set fold method
+-- Set fold method using built-in treesitter foldexpr
 vim.api.nvim_create_autocmd("FileType", {
   callback = function()
-    if require("nvim-treesitter.parsers").has_parser() then
+    if pcall(vim.treesitter.get_parser) then
       vim.opt.foldmethod = "expr"
-      vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+      vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
     else
       vim.opt.foldmethod = "syntax"
     end
