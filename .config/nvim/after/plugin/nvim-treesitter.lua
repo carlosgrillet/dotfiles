@@ -1,18 +1,10 @@
-local status, ts = pcall(require, "nvim-treesitter.configs")
+local status, ts = pcall(require, "nvim-treesitter")
 if not status then
-  vim.notify("Failed to load nvim-treesitter") return
+  vim.notify("Failed to load nvim-treesitter")
+  return
 end
 
 ts.setup({
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-    disable = {},
-  },
-  -- to avoid errors run sudo apt install g++
-  --run TSUpdateSync when having problems with tree-sitter
   ensure_installed = {
     "bash",
     "c",
@@ -28,10 +20,19 @@ ts.setup({
     "vimdoc",
     "yaml",
   },
-  autotag = {
-    enable = true,
-  },
-  textobjects = {
+})
+
+-- Enable treesitter highlighting for languages without built-in support
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
+
+-- Textobjects (requires nvim-treesitter-textobjects on main branch)
+local ts_ok, textobjects = pcall(require, "nvim-treesitter-textobjects")
+if ts_ok then
+  textobjects.setup({
     select = {
       enable = true,
       lookahead = true,
@@ -48,5 +49,5 @@ ts.setup({
         ["ab"] = "@block.outer",
       },
     },
-  }
-})
+  })
+end
