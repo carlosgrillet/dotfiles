@@ -31,7 +31,7 @@ vim.opt.path:append { "**" }
 vim.opt.pumblend = 0
 vim.opt.scrolloff = 8
 vim.opt.shell = "zsh"
-vim.opt.shiftwidth = 2
+vim.opt.shiftwidth = 4
 vim.opt.shortmess:append("I")
 vim.opt.showcmd = true
 vim.opt.signcolumn = "yes"
@@ -42,7 +42,7 @@ vim.opt.splitbelow = true
 vim.opt.splitkeep = "screen"
 vim.opt.splitright = true
 vim.opt.swapfile = false
-vim.opt.tabstop = 2
+vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.timeoutlen = 300
 vim.opt.title = true
