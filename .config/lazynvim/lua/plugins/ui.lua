@@ -53,9 +53,6 @@ return {
             style = "rounded",
           },
           filter_options = {},
-          win_options = {
-            winhighlight = "Normal:TelescopePromptNormal,FloatTitle:Title,FloatBorder:NonText",
-          },
         },
         notify = {
           size = {
