@@ -124,10 +124,18 @@ vim.lsp.enable("rust_analyzer")
 vim.lsp.config("clangd", {
   on_attach = on_attach,
   filetypes = { "c", "cpp" },
+  root_dir = function(bufnr, cb)
+    local current_file = vim.api.nvim_buf_get_name(bufnr)
+    local parent_dir = vim.fn.fnamemodify(current_file, ':p:h')
+    local found = vim.fs.find({ 'compile_commands.json', '.git' }, {
+      upward = true,
+      path = parent_dir,
+    })[1]
+    cb(found and vim.fs.dirname(found) or parent_dir)
+  end,
   cmd = {
     "clangd",
     "--background-index",
-    "--suggest-missing-includes",
     "--all-scopes-completion",
     "--completion-style=detailed",
   }
@@ -147,7 +155,7 @@ vim.lsp.config("terraformls", {
   filetypes = { "terraform", "tf", "hcl", "tfvars" },
   cmd = { "terraform-ls", "serve" }
 })
-vim.lsp.enable("clangd")
+vim.lsp.enable("terraformls")
 
 -- Diagnostic symbols in the sign column (gutter)
 local signs = {
