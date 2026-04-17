@@ -23,6 +23,16 @@ return {
         view_history = "split",
         view_search = "virtualtext",
       },
+      routes = {
+        {
+          filter = { event = "msg_show", kind = "", find = "" },
+          opts = { skip = false },
+        },
+        {
+          view = "split",
+          filter = { event = "msg_show", min_height = 2 },
+        },
+      },
       popupmenu = {
         enabled = true,
         backend = "nui",
