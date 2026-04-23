@@ -4,6 +4,7 @@ alias ls='ls -lh --color=auto'
 alias play='asciinema play'
 alias rec='asciinema rec'
 alias tf='terraform'
+alias ness='nvim -R'
 alias vim='nvim'
 
 if [[ -x kubecolor ]]; then
