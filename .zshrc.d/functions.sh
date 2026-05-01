@@ -1,3 +1,7 @@
+vman() {
+    man "$@" | col -b | nvim - +"set ft=man cc=78 nomod noma nu" -R
+}
+
 tm() {
     if [ -z "$1" ]; then
         echo "Use this to attach to a tmux session"
