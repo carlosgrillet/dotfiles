@@ -70,7 +70,10 @@ return {
     "windwp/nvim-autopairs",
     opts = {},
     config = function(_, opts)
-      require("nvim-autopairs").setup(opts)
+      local npairs = require("nvim-autopairs")
+      local Rule = require("nvim-autopairs.rule")
+      npairs.setup(opts)
+      npairs.add_rule(Rule("<", ">"))
     end,
   },
 
