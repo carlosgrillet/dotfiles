@@ -14,4 +14,6 @@ term = "xterm-256color"
 theme = "Brogrammer"
 title = "Ghost in the Shell"
 window-height = 30
+window-padding-x = 8
+window-padding-y = 8
 window-width = 85
