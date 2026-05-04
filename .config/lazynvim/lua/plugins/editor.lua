@@ -7,6 +7,12 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
 
+      local compare_alpha = function(entry1, entry2)
+        local a = entry1.completion_item.label:lower()
+        local b = entry2.completion_item.label:lower()
+        if a ~= b then return a < b end
+      end
+
       cmp.setup({
         preselect = false,
         snippet = {
@@ -42,7 +48,7 @@ return {
             compare.score,
             compare.sort_text,
             compare.kind,
-            compare.length,
+            compare_alpha,
             compare.order,
           },
         },
