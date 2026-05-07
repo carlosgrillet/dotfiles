@@ -79,7 +79,7 @@ return {
       local npairs = require("nvim-autopairs")
       local Rule = require("nvim-autopairs.rule")
       npairs.setup(opts)
-      npairs.add_rule(Rule("<", ">"))
+      -- npairs.add_rule(Rule("<", ">")) -- this colliding with ts-autotag
     end,
   },
 
