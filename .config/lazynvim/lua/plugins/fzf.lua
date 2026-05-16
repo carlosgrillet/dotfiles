@@ -57,6 +57,12 @@ return {
         end,
       },
       {
+        ";D",
+        function()
+          require("fzf-lua").diagnostics_workspace()
+        end,
+      },
+      {
         ";b",
         function()
           require("fzf-lua").buffers()
