@@ -59,3 +59,12 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
         vim.cmd("2match OverLength /\\%81v.\\+/")
     end,
 })
+
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+    pattern = { "*.go", "*.rs", "*.py", "*.lua" },
+    desc = "Highlight trailing whitespace",
+    callback = function()
+        vim.cmd("highlight TrailingWhitespace ctermbg=red guibg=#FF0000")
+        vim.cmd("match TrailingWhitespace /\\s\\+$/")
+    end,
+})
