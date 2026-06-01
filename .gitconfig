@@ -1,29 +1,48 @@
 [user]
-  name = Carlos Grillet
-  email = carlos@email.com
-  signingkey = ~/.ssh/id_rsa.pub
+    name = Carlos Grillet
+    email = carlos@email.com
+    signingkey = ~/.ssh/id_rsa.pub
 [log]
-  abbrevCommit = true
+    abbrevCommit = true
 [color "decorate"]
-  HEAD = red
+    HEAD = red
 [pretty]
-  compact = format:%C(bold blue)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(dim white)%an%C(reset)%C(bold red)%d%C(reset) %C(white)%n%s%n%C(reset)
+    compact = format:%C(bold blue)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(dim white)%an%C(reset)%C(bold red)%d%C(reset) %C(white)%n%s%n%C(reset)
 [alias]
-  s = status --short
-  l = log --graph --pretty=compact --all
-  ls = log --graph --pretty=compact --all --stat
+    s = status --short
+    l = log --graph --pretty=compact --all
+    ls = log --graph --pretty=compact --all --stat
 [init]
-  defaultBranch = main
+    defaultBranch = main
 [pull]
-  rebase = true
-  default = current
+    rebase = true
 [push]
-  autoSetupRemote = true
-  default = current
-  followTags = true
+    autoSetupRemote = true
+    followTags = true
+    default = current
+[format]
+    outputDirectory = patches
+    signOff = true
+[fetch]
+    writeCommitGraph = true
+    parallel = 0
+    prune = true
+[pack]
+    writeBitmaps = true
+    threads = 0
+[diff]
+    markUnblamableLines = true
+    markIgoredLines = true
+[core]
+    deltaBaseCacheLimit = 2g
+    untrackedCache = true
+    multiPackIndex = true
+    commitGraph = true
+    fsmonitor = true
+    abbrev = 12
 [gpg]
-  format = ssh
+    format = ssh
 [commit]
-  gpgSign = true
+    gpgSign = true
 [tag]
-  gpgSign = true
+    gpgSign = true
