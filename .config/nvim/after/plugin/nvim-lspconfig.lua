@@ -97,6 +97,11 @@ vim.lsp.config('bashls', {
   capabilities = capabilities,
 })
 
+vim.lsp.config('tinymist', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
 vim.lsp.config('gopls', {
   -- go install golang.org/x/tools/gopls@latest
   on_attach = on_attach,
