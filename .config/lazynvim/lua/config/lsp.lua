@@ -79,7 +79,11 @@ vim.lsp.config("gopls", {
 })
 vim.lsp.enable("gopls")
 
-vim.lsp.config("ruff", {})
+vim.lsp.config("ruff", {
+    on_attach = on_attach,
+    cmd = { "ruff", "server" },
+    filetypes = { "python" },
+})
 vim.lsp.enable("ruff")
 
 vim.lsp.config("dockerls", {})
@@ -90,6 +94,7 @@ vim.lsp.enable("bashls")
 
 vim.lsp.config("pyright", {
     on_attach = on_attach,
+    cmd = { "pyright-langserver", "--stdio" },
     filetypes = { "python" },
     settings = {
         pyright = {
