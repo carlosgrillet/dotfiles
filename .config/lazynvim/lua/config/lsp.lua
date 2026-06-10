@@ -79,10 +79,13 @@ vim.lsp.config("gopls", {
 })
 vim.lsp.enable("gopls")
 
+vim.lsp.config("ruff", {})
 vim.lsp.enable("ruff")
 
+vim.lsp.config("dockerls", {})
 vim.lsp.enable("dockerls")
 
+vim.lsp.config("bashls", {})
 vim.lsp.enable("bashls")
 
 vim.lsp.config("pyright", {
