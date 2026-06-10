@@ -1,0 +1,60 @@
+source ~/.config/neomutt/colors
+
+# Identity
+set from = "carlos@carlosgrillet.me"
+set real_name = "Carlos Grillet"
+
+# SMTP
+set smtp_url = "smtps://carlos@carlosgrillet.me@smtppro.zoho.eu:465/"
+set smtp_pass = "`op read 'op://Private/Zoho/password'`"
+set ssl_force_tls = yes
+
+# IMAP
+set folder = "imaps://carlos@carlosgrillet.me@imappro.zoho.eu:993/"
+set imap_pass = "`op read 'op://Private/Zoho/password'`"
+set spoolfile = +INBOX
+set record = +Sent
+set trash = +Trash
+set postponed = +Drafts
+
+set mail_check = 120
+set mail_check_stats = yes
+set mail_check_stats_interval = 120
+set timeout = 30
+set imap_keepalive = 300
+set imap_idle = yes
+
+# Cache
+set header_cache = ~/.cache/neomutt/cache/
+set message_cachedir = ~/.cache/neomutt/cache/
+set header_cache_compress_method = "zstd"
+set header_cache_compress_level = 3
+set tmpdir = /tmp
+
+# Visual
+set attribution = "On %d, %n wrote:"
+set charset = "utf-8"
+set edit_headers = yes
+set editor = "nvim"
+set envelope_from = yes
+set fast_reply = yes
+set forward_quote = yes
+set include = yes
+set move = no
+set pager_context = 3
+set pager_index_lines = 5
+set pager_stop = yes
+set send_charset = "us-ascii:utf-8"
+set index_format = "%6C %Z %{%m/%d %H:%M} %-15.15F %4c %s"
+set sort = threads
+set sort_aux = reverse-last-date-received
+set status_format = " %f [%u/%m] %l %> %P "
+set text_flowed = no
+
+unset markers
+unset mime_forward
+unset sig_dashes
+unset use_domain
+
+mailboxes +INBOX +INBOX/netdev +INBOX/netfilter-devel
+

@@ -1,0 +1,75 @@
+# Solarized Osaka — 256-color for neomutt
+# Palette: craftzdog/solarized-osaka.nvim mapped to xterm-256
+# Background: default (inherits terminal bg)
+
+# base01 #586e74 → color242   deemphasized
+# base0  #9fabad → color248   body text
+# fg     #839495 → color245   default fg
+
+# ── Normal ────────────────────────────────────────────────────────────────────
+color normal          color252   default
+
+# ── Index ─────────────────────────────────────────────────────────────────────
+color index           color245   default   ".*"
+color index           color160   default   "~D"      # deleted
+color index           color214   default   "~F"      # flagged
+color index           color50    default   "~T"      # tagged
+
+color index_number    color136   default             # dark yellow (#b28600)
+color index_flags     color100   default             # green (#859900)
+color index_date      color32    default             # blue (#278bd3)
+color index_author    color160   default             # red (#dc312e)
+color index_size      color214   default             # yellow (#ffbf00) — whole field
+color index_subject   color252   default             # near-white
+
+# new — brighter variants
+color index_subject   color255   default   "~N"      # pure white subject
+
+# patch cover letter [PATCH 0/N] — violet (#6d72c5)
+color index_subject   color62    default   "~s \"[^0-9]0+/[0-9]\""
+
+# ── Headers ───────────────────────────────────────────────────────────────────
+color hdrdefault      color242   default
+# field name labels — teal (matches neovim)
+color header          color36    default   "^[A-Za-z-]+:"
+# From / To / Subject lines — bright white value
+color header          color252   default   "^(From|To|Subject):"
+# Cc / Bcc lines — orange (names stand out like neovim)
+color header          color166   default   "^(Cc|Bcc):"
+# Message-ID / References / In-Reply-To — muted
+color header          color242   default   "^(Message-ID|References|In-Reply-To|X-Mailer|User-Agent):"
+# email addresses in angle brackets — teal, overlays any header
+color body            color36    default   "<[^>]+@[^>]+>"
+# date header value — cyan
+color header          color50    default   "^Date:"
+
+# ── Body ──────────────────────────────────────────────────────────────────────
+color quoted          color32    default
+color quoted1         color32    default
+color quoted2         color36    default
+color quoted3         color100   default
+color quoted4         color136   default
+color signature       color242   default
+color attachment      color214   default
+color bold            color249   default
+color underline       color249   default
+
+# URLs and email addresses
+color body            color50    default   "(https?|ftp)://[^ \t\r\n]*"
+color body            color75    default   "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+"
+
+# PGP
+color body            color154   default   "^(gpg|Good signature)"
+color body            color160   default   "^(BAD signature|gpg: BAD)"
+
+# ── UI chrome ─────────────────────────────────────────────────────────────────
+color status          color245   color235
+color indicator       color252   color23
+color error           color160   default
+color message         color154   default
+color prompt          color214   default
+color tilde           color242   default
+color tree            color36    default
+color markers         color242   default
+color search          default    color214
+
