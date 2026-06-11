@@ -1,0 +1,94 @@
+# Solarized Osaka — ported from neomutt colors
+# Palette mapped to xterm-256. Background inherits terminal (default).
+# aerc styleset(7): <object>.<attr> = <value>; * = all objects.
+
+# ── Normal / base ─────────────────────────────────────────────────────────────
+*.fg                       = 252
+*.bg                       = default
+
+# selected row (mutt: indicator 252 / bg 23)
+*.selected.fg              = 252
+*.selected.bg              = 23
+
+# ── Message list (mutt: index) ────────────────────────────────────────────────
+msglist_default.fg         = 245
+
+msglist_unread.fg          = 214          # ~N new — yellow (#ffbf00)
+msglist_unread.bold        = true
+
+msglist_read.fg            = 245
+msglist_flagged.fg         = 214          # ~F flagged — yellow
+msglist_deleted.fg         = 160          # ~D deleted — red
+msglist_marked.fg          = 50           # ~T tagged — cyan
+msglist_answered.fg        = 100          # green
+msglist_gutter.fg          = 36           # thread tree — teal
+msglist_pill.fg            = 252
+msglist_pill.bg            = 23
+
+# patch cover letter [PATCH 0/N] / [PATCH 00/NN] — violet (#6d72c5)
+"msglist_*.Subject,~[^0-9]0+/[0-9].fg"          = 62
+"msglist_*.Subject,~[^0-9]0+/[0-9].selected.fg" = 62
+
+# [GIT PULL] Networking — red
+"msglist_*.Subject,~\[GIT PULL\] Networking.fg"          = 160
+"msglist_*.Subject,~\[GIT PULL\] Networking.selected.fg" = 160
+
+# ── Directory list ────────────────────────────────────────────────────────────
+dirlist_default.fg         = 245
+dirlist_unread.fg          = 255
+dirlist_unread.bold        = true
+dirlist_recent.fg          = 50
+
+# ── Message view headers (mutt: header / hdrdefault) ──────────────────────────
+#header.fg                  = 36           # teal field labels
+
+# ── Status / tabs / chrome ────────────────────────────────────────────────────
+statusline_default.fg      = 245
+statusline_default.bg      = 235
+statusline_error.fg        = 160
+statusline_success.fg      = 154
+
+error.fg                   = 160
+warning.fg                 = 214
+success.fg                 = 154
+
+title.fg                   = 252
+title.bg                   = 235
+border.fg                  = 36
+border.bg                  = default
+
+tab.fg                     = 245
+tab.bg                     = default
+tab.selected.fg            = 252
+tab.selected.bg            = 23
+
+spinner.fg                 = 214
+
+# ── Completion popup ──────────────────────────────────────────────────────────
+completion_default.fg      = 245
+completion_gutter.bg       = 235
+completion_pill.fg         = 252
+completion_pill.bg         = 23
+
+# selector (prompt menus)
+selector_default.fg        = 245
+selector_focused.fg        = 252
+selector_focused.bg        = 23
+
+# ── Body coloring via colorize filter (mutt: quoted/signature/url/body) ───────
+# These objects only exist in the [viewer] context.
+[viewer]
+quote_1.fg                 = 32           # blue
+quote_2.fg                 = 36           # teal
+quote_3.fg                 = 100          # green
+quote_4.fg                 = 136          # dark yellow
+quote_x.fg                 = 242          # deeper quotes — muted
+signature.fg               = 242
+url.underline              = true
+header.fg                  = 32           # teal field labels in message body
+#diff_meta.fg               = 245
+diff_meta.bold             = true
+# diff_chunk.fg              = 242
+diff_chunk_func.fg         = 255
+# diff_add.fg                = 154
+# diff_del.fg                = 160
