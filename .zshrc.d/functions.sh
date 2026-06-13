@@ -50,7 +50,7 @@ send_patches() {
     #            the get_maintainer.pl results.
     # --dry-run passes --dry-run through to git send-email (no mail sent).
 
-    set -euo pipefail
+    setopt local_options pipefail
 
     TARGET=""
     DRY_RUN=0
@@ -72,26 +72,25 @@ send_patches() {
             ;;
         *)
             echo "Usage: $0 --target <patch-file|patches-dir> [--dry-run]" >&2
-            exit 1
+            return 1
             ;;
         esac
     done
 
     if [ -z "$TARGET" ]; then
         echo "Usage: $0 --target <patch-file|patches-dir> [--dry-run]" >&2
-        exit 1
+        return 1
     fi
 
-    REPO_ROOT=$(git rev-parse --show-toplevel)
+    REPO_ROOT=$(git rev-parse --show-toplevel) || return 1
     GET_MAINTAINER="$REPO_ROOT/scripts/get_maintainer.pl"
-    SMTP_PASS=$(op read 'op://Private/Zoho/password')
+    SMTP_PASS=$(op read 'op://Private/Zoho/password') || return 1
 
     RECIP_FILE=$(mktemp)
-    trap 'rm -f "$RECIP_FILE"' EXIT
 
     confirm() {
         local prompt="$1"
-        read -rp "$prompt [y/N] " ans
+        read -r "ans?$prompt [y/N] "
         [[ "$ans" =~ ^[Yy]$ ]]
     }
 
@@ -110,6 +109,7 @@ send_patches() {
             "$@"
     }
 
+    {
     if [ -f "$TARGET" ]; then
         if [ -n "$TO" ]; then
             echo "Recipient for $TARGET: $TO"
@@ -118,18 +118,17 @@ send_patches() {
             echo "Recipients for $TARGET:"
             cat "$RECIP_FILE"
         fi
-        confirm "Send this patch?" || exit 0
+        confirm "Send this patch?" || return 0
 
-        send_email "$TARGET"
+        send_email "$TARGET" || return 1
 
     elif [ -d "$TARGET" ]; then
-        shopt -s nullglob
+        setopt local_options nullglob
         patches=("$TARGET"/0*.patch)
-        shopt -u nullglob
 
         if [ ${#patches[@]} -eq 0 ]; then
             echo "error: no 0*.patch files in $TARGET" >&2
-            exit 1
+            return 1
         fi
 
         if [ -n "$TO" ]; then
@@ -139,22 +138,22 @@ send_patches() {
             echo "Recipients for series:"
             cat "$RECIP_FILE"
         fi
-        confirm "Send series?" || exit 0
+        confirm "Send series?" || return 0
 
         cover=("$TARGET"/0000-*.patch)
         if [ ${#cover[@]} -ne 1 ]; then
             echo "error: expected exactly one 0000-cover-letter patch in $TARGET" >&2
-            exit 1
+            return 1
         fi
 
         echo "Sending cover letter: ${cover[0]}"
-        out=$(send_email "${cover[0]}")
+        out=$(send_email "${cover[0]}") || return 1
         echo "$out"
 
         msgid=$(grep -m1 -ioP 'Message-ID:\s*<\K[^>]+' <<< "$out")
         if [ -z "$msgid" ]; then
             echo "error: could not find Message-Id of cover letter" >&2
-            exit 1
+            return 1
         fi
         echo "Cover letter Message-Id: $msgid"
 
@@ -164,11 +163,14 @@ send_patches() {
         done
         if [ ${#rest[@]} -gt 0 ]; then
             echo "Sending ${#rest[@]} patch(es), in-reply-to <$msgid>"
-            send_email --in-reply-to="$msgid" "${rest[@]}"
+            send_email --in-reply-to="$msgid" "${rest[@]}" || return 1
         fi
 
     else
         echo "error: $TARGET is neither a file nor a directory" >&2
-        exit 1
+        return 1
     fi
+    } always {
+        rm -f "$RECIP_FILE"
+    }
 }
