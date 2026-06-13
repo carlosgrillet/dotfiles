@@ -52,9 +52,10 @@ send_patches() {
 
     setopt local_options pipefail
 
-    TARGET=""
-    DRY_RUN=0
-    TO=""
+    local TARGET="" DRY_RUN=0 TO=""
+    local REPO_ROOT GET_MAINTAINER SMTP_PASS RECIP_FILE
+    local out msgid
+    local -a patches cover rest
 
     while [ $# -gt 0 ]; do
         case "$1" in
@@ -82,10 +83,10 @@ send_patches() {
     GET_MAINTAINER="$REPO_ROOT/scripts/get_maintainer.pl"
     SMTP_PASS=$(op read 'op://Private/Zoho/password') || return 1
 
-    RECIP_FILE=$(mktemp)
+    RECIP_FILE=$(mktemp) || return 1
 
     confirm() {
-        local prompt="$1"
+        local prompt="$1" ans
         read -r "ans?$prompt [y/N] "
         [[ "$ans" =~ ^[Yy]$ ]]
     }
@@ -168,5 +169,6 @@ send_patches() {
     fi
     } always {
         rm -f "$RECIP_FILE"
+        unfunction confirm send_email
     }
 }
