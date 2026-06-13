@@ -31,6 +31,27 @@ create_tmux_session() {
   tmux select-window -t "$session_name:1"
 }
 
+tm() {
+    if [ -z "$1" ]; then
+        echo "Use this to attach to a tmux session"
+        echo "Usage: tm <session-name>"
+        return 1
+    else
+        tmux a -t "$1"
+    fi
+}
+
+tk() {
+    if [ -z "$1" ]; then
+        echo "Use this to kill a specific tmux session"
+        echo "Usage: tk <session-name>"
+        return 1
+    else
+        tmux kill-session -t "$1"
+    fi
+}
+
+
 ### Tmux sessions
 
 tmoperator() {

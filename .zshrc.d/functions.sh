@@ -2,46 +2,6 @@ vman() {
     man "$@" | col -b | nvim - +"set ft=man cc=78 nomod noma nu" -R
 }
 
-tm() {
-    if [ -z "$1" ]; then
-        echo "Use this to attach to a tmux session"
-        echo "Usage: tm <session-name>"
-        return 1
-    else
-        tmux a -t "$1"
-    fi
-}
-
-tk() {
-    if [ -z "$1" ]; then
-        echo "Use this to kill a specific tmux session"
-        echo "Usage: tk <session-name>"
-        return 1
-    else
-        tmux kill-session -t "$1"
-    fi
-}
-
-showme() {
-    if [ -z "$1" ]; then
-        echo "Use this to find files within a directory"
-        echo "Usage: showme <regex>"
-        return 1
-    else
-        find . | grep -i "$1"
-    fi
-}
-
-search() {
-    if [ -z "$1" ]; then
-        echo "Use this to find text within all files in a directory"
-        echo "Usage: search <regex>"
-        return 1
-    else
-        egrep -rniI "$1" . | sort | uniq
-    fi
-}
-
 sshkey() {
     echo "#Carlos Grillet"
     cat ~/.ssh/id_rsa.pub
@@ -53,47 +13,6 @@ pubip() {
     else  
         curl -s "ipinfo.io/"
     fi
-}
-
-ktoto() {
-    if [ -x "$(command -v jq)" ]; then
-        curl -s "ipinfo.io/$1" | jq
-    else  
-        curl -s "ipinfo.io/$1"
-    fi
-}
-
-analyze-repo() {
-    if ! command -v git-of-theseus-analyze &> /dev/null; then
-        echo "git-of-theseus not installed"
-        read
-    fi
-
-    if ! [ -d ./.git ]; then
-        echo "Not in root of the repo"
-        exit 1
-    fi
-
-    mkdir .git-of-theseus
-    cd .git-of-theseus || exit 1
-    git-of-theseus-analyze --procs "$(nproc)" ../
-
-    git-of-theseus-stack-plot cohorts.json --outfile code-over-years.png
-    git-of-theseus-stack-plot cohorts.json --normalize --outfile code-over-years-normal.png
-
-    git-of-theseus-line-plot authors.json --max-n 10 --outfile code-authors.png
-    git-of-theseus-line-plot authors.json --normalize --max-n 10 --outfile code-authors-normal.png
-
-    git-of-theseus-line-plot dirs.json --max-n 10 --outfile dirs.png
-    git-of-theseus-line-plot dirs.json --normalize --max-n 10 --outfile dirs-normal.png
-
-    git-of-theseus-line-plot domains.json --max-n 10 --outfile domains.png
-    git-of-theseus-line-plot domains.json --normalize --max-n 10 --outfile domains-normal.png
-
-    git-of-theseus-line-plot exts.json --max-n 10 --outfile file-extensions.png
-    git-of-theseus-line-plot exts.json --normalize --max-n 10 --outfile file-extensions-normal.png
-
-    git-of-theseus-survival-plot --exp-fit survival.json --outfile half-life-code.png
 }
 
 count_lines() {
@@ -112,4 +31,144 @@ count_lines() {
     fi
 
     find "${folder}" -type f -name "*.${format}" -exec wc -l {} + | awk "${awkscript}"
+}
+
+send_patches() {
+    # send_patches - send a single patch or a patch series via git send-email
+    #
+    # Usage:
+    #   send_patches --target <patch-file|patches-dir> [--to <addr>] [--dry-run]
+    #
+    # - File:   runs get_maintainer.pl on it, shows recipients, asks for
+    #           confirmation, then sends it standalone.
+    # - Folder: builds one recipient list (union of get_maintainer.pl over all
+    #           0*.patch files), sends 0000-cover-letter.patch first, grabs its
+    #           Message-Id, then sends the rest with --in-reply-to pointing at
+    #           the cover letter so they thread correctly.
+    #
+    # --to       overrides recipients: send only to this address instead of
+    #            the get_maintainer.pl results.
+    # --dry-run passes --dry-run through to git send-email (no mail sent).
+
+    set -euo pipefail
+
+    TARGET=""
+    DRY_RUN=0
+    TO=""
+
+    while [ $# -gt 0 ]; do
+        case "$1" in
+        --target)
+            TARGET="$2"
+            shift 2
+            ;;
+        --to)
+            TO="$2"
+            shift 2
+            ;;
+        --dry-run)
+            DRY_RUN=1
+            shift
+            ;;
+        *)
+            echo "Usage: $0 --target <patch-file|patches-dir> [--dry-run]" >&2
+            exit 1
+            ;;
+        esac
+    done
+
+    if [ -z "$TARGET" ]; then
+        echo "Usage: $0 --target <patch-file|patches-dir> [--dry-run]" >&2
+        exit 1
+    fi
+
+    REPO_ROOT=$(git rev-parse --show-toplevel)
+    GET_MAINTAINER="$REPO_ROOT/scripts/get_maintainer.pl"
+    SMTP_PASS=$(op read 'op://Private/Zoho/password')
+
+    RECIP_FILE=$(mktemp)
+    trap 'rm -f "$RECIP_FILE"' EXIT
+
+    confirm() {
+        local prompt="$1"
+        read -rp "$prompt [y/N] " ans
+        [[ "$ans" =~ ^[Yy]$ ]]
+    }
+
+    send_email() {
+        local extra=()
+        [ "$DRY_RUN" -eq 1 ] && extra+=(--dry-run)
+        if [ -n "$TO" ]; then
+            extra+=(--to="$TO")
+        else
+            extra+=(--to-cmd="cat $RECIP_FILE")
+        fi
+        git send-email \
+            --smtp-pass="$SMTP_PASS" \
+            --confirm=never \
+            "${extra[@]}" \
+            "$@"
+    }
+
+    if [ -f "$TARGET" ]; then
+        if [ -n "$TO" ]; then
+            echo "Recipient for $TARGET: $TO"
+        else
+            "$GET_MAINTAINER" --nogit-fallback "$TARGET" | sort -u > "$RECIP_FILE"
+            echo "Recipients for $TARGET:"
+            cat "$RECIP_FILE"
+        fi
+        confirm "Send this patch?" || exit 0
+
+        send_email "$TARGET"
+
+    elif [ -d "$TARGET" ]; then
+        shopt -s nullglob
+        patches=("$TARGET"/0*.patch)
+        shopt -u nullglob
+
+        if [ ${#patches[@]} -eq 0 ]; then
+            echo "error: no 0*.patch files in $TARGET" >&2
+            exit 1
+        fi
+
+        if [ -n "$TO" ]; then
+            echo "Recipient for series: $TO"
+        else
+            "$GET_MAINTAINER" --nogit-fallback "${patches[@]}" | sort -u > "$RECIP_FILE"
+            echo "Recipients for series:"
+            cat "$RECIP_FILE"
+        fi
+        confirm "Send series?" || exit 0
+
+        cover=("$TARGET"/0000-*.patch)
+        if [ ${#cover[@]} -ne 1 ]; then
+            echo "error: expected exactly one 0000-cover-letter patch in $TARGET" >&2
+            exit 1
+        fi
+
+        echo "Sending cover letter: ${cover[0]}"
+        out=$(send_email "${cover[0]}")
+        echo "$out"
+
+        msgid=$(grep -m1 -ioP 'Message-ID:\s*<\K[^>]+' <<< "$out")
+        if [ -z "$msgid" ]; then
+            echo "error: could not find Message-Id of cover letter" >&2
+            exit 1
+        fi
+        echo "Cover letter Message-Id: $msgid"
+
+        rest=()
+        for f in "${patches[@]}"; do
+            [[ $(basename "$f") == 0000-* ]] || rest+=("$f")
+        done
+        if [ ${#rest[@]} -gt 0 ]; then
+            echo "Sending ${#rest[@]} patch(es), in-reply-to <$msgid>"
+            send_email --in-reply-to="$msgid" "${rest[@]}"
+        fi
+
+    else
+        echo "error: $TARGET is neither a file nor a directory" >&2
+        exit 1
+    fi
 }
