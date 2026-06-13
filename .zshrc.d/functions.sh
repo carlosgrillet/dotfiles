@@ -37,7 +37,7 @@ send_patches() {
     # send_patches - send a single patch or a patch series via git send-email
     #
     # Usage:
-    #   send_patches --target <patch-file|patches-dir> [--to <addr>] [--dry-run]
+    #   send_patches [--to <addr>] [--dry-run] <patch-file|patches-dir>
     #
     # - File:   runs get_maintainer.pl on it, shows recipients, asks for
     #           confirmation, then sends it standalone.
@@ -58,10 +58,6 @@ send_patches() {
 
     while [ $# -gt 0 ]; do
         case "$1" in
-        --target)
-            TARGET="$2"
-            shift 2
-            ;;
         --to)
             TO="$2"
             shift 2
@@ -71,14 +67,14 @@ send_patches() {
             shift
             ;;
         *)
-            echo "Usage: $0 --target <patch-file|patches-dir> [--dry-run]" >&2
-            return 1
+            TARGET="$1"
+            shift
             ;;
         esac
     done
 
     if [ -z "$TARGET" ]; then
-        echo "Usage: $0 --target <patch-file|patches-dir> [--dry-run]" >&2
+        echo "Usage: $0 [--to <addr>] [--dry-run] <patch-file|patches-dir>" >&2
         return 1
     fi
 
