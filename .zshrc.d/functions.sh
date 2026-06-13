@@ -142,8 +142,8 @@ send_patches() {
             return 1
         fi
 
-        echo "Sending cover letter: ${cover[0]}"
-        out=$(send_email "${cover[0]}") || return 1
+        echo "Sending cover letter: ${cover[1]}"
+        out=$(send_email "${cover[1]}") || return 1
         echo "$out"
 
         msgid=$(grep -m1 -ioP 'Message-ID:\s*<\K[^>]+' <<< "$out")
