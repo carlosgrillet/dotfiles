@@ -1,0 +1,22 @@
+gui:
+  scrollPastBottom: true
+  showCommandLog: false
+  commitHashLength: 12
+  showBottomLine: true
+  showRandomTip: false
+  mouseEvents: false
+
+git:
+  branchLogCmd: git log --pretty=compact --color=always {{branchName}} --
+  autoRefresh: true
+  autoFetch: true
+  commit:
+    signOff: true
+
+
+disableStartupPopups: true
+
+confirmOnQuit: true
+
+update:
+  method: never
