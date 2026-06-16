@@ -68,3 +68,15 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
         vim.cmd("match TrailingWhitespace /\\s\\+$/")
     end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "gitsendemail", "mail", "email" },
+    desc = "Set colorcolumn and textwidth to 75",
+    callback = function()
+        local opt       = vim.opt
+        opt.colorcolumn = "75"
+        opt.shiftwidth  = 2
+        opt.textwidth   = 75
+        opt.tabstop     = 2
+    end,
+})
