@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+opts=(--nogit-fallback --norolestats --nor)
+
+if [[ $(basename "$1") =~ 0000- ]]; then
+    dir=$(dirname "$1")
+    patches=()
+    for patch in "$dir"/*.patch; do
+        [[ $(basename "$patch") =~ 0000- ]] && continue
+        patches+=("$patch")
+    done
+    ./scripts/get_maintainer.pl --nom "${opts[@]}" "${patches[@]}"
+else
+    ./scripts/get_maintainer.pl --nom "${opts[@]}" "$1"
+fi
