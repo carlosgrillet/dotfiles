@@ -1,0 +1,24 @@
+[user]
+    name = Carlos Grillet
+    email = carlos@carlosgrillet.me
+    signingkey = ~/.ssh/id_ed25519.pub
+[core]
+  repositoryformatversion = 0
+  filemode = true
+  bare = true
+[maintenace]
+    auto = true
+    strategy = incremental
+[sendemail]
+    smtpUser = carlos@carlosgrillet.me
+    smtpserver = smtppro.zoho.eu
+    smtpServerPort = 587
+    smtpEncryption = tls
+    confirm = always
+    chainreplyto = false
+    thread = false
+    suppresscc = self
+    tocmd = /repos/dotfiles/bin/kpatch_to
+    cccmd = /repos/dotfiles/bin/kpatch_cc
+[alias]
+    send = "!git send-email --smtp-pass=\"$(op read 'op://Private/ZohoApp/password')\""
