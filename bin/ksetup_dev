@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+Usage: klinux_setup [OPTIONS] [DIR]
+
+Clone the Linux kernel as a bare repository, add subsystem remotes, and create
+worktrees for each. Userspace tools are cloned as standalone repositories.
+
+Arguments:
+  DIR           Directory for the bare repo (default: linux.git)
+
+Options:
+  -h, --help    Show this help message and exit
+
+Layout after setup:
+  DIR/                 bare linux.git (shared object store for kernel worktrees)
+  ../nf/               netfilter stable
+  ../nf-next/          netfilter development
+  ../bpf/              BPF stable
+  ../bpf-next/         BPF development
+  ../net/              netdev stable
+  ../net-next/         netdev development
+  ../ipvs/             IPVS stable
+  ../ipvs-next/        IPVS development
+  ../ipsec/            IPsec stable
+  ../ipsec-next/       IPsec development
+  ../mptcp/            MPTCP
+  ../wireguard-linux/  WireGuard kernel patches
+  ../wireguard-tools/  WireGuard userspace tools (standalone clone)
+  ../ipvsadm/          ipvsadm (standalone clone)
+  ../iproute2/         iproute2 (standalone clone)
+  ../iproute2-next/    iproute2-next (standalone clone)
+  ../ethtool/          ethtool (standalone clone)
+
+Notes:
+  Run from the parent directory where DIR and worktree siblings should live.
+  Initial kernel clone is ~1 GB compressed; subsystem fetches add more.
+EOF
+}
+
+case "${1:-}" in
+    -h|--help) usage; exit 0 ;;
+esac
+
+BARE="${1:-linux.git}"
+BASE="https://git.kernel.org/pub/scm"
+
+# Kernel trees — share the linux.git object store, checked out as worktrees.
+# Order matters: listed here for readability, but bash iterates associative
+# arrays in arbitrary order. All fetches are independent so this is fine.
+declare -A KERNEL_REMOTES=(
+    [nf]="$BASE/linux/kernel/git/netfilter/nf.git"
+    [nf-next]="$BASE/linux/kernel/git/netfilter/nf-next.git"
+    [bpf]="$BASE/linux/kernel/git/bpf/bpf.git"
+    [bpf-next]="$BASE/linux/kernel/git/bpf/bpf-next.git"
+    [net]="$BASE/linux/kernel/git/netdev/net.git"
+    [net-next]="$BASE/linux/kernel/git/netdev/net-next.git"
+    [ipvs]="$BASE/linux/kernel/git/horms/ipvs.git"
+    [ipvs-next]="$BASE/linux/kernel/git/horms/ipvs-next.git"
+    [ipsec]="$BASE/linux/kernel/git/klassert/ipsec.git"
+    [ipsec-next]="$BASE/linux/kernel/git/klassert/ipsec-next.git"
+    [mptcp]="$BASE/linux/kernel/git/mptcp/linux.git"
+    [wireguard-linux]="$BASE/linux/kernel/git/zx2c4/wireguard-linux.git"
+)
+
+# Userspace repos — unrelated history, cannot be worktrees of linux.git.
+declare -A USERSPACE_REPOS=(
+    [wireguard-tools]="$BASE/linux/kernel/git/zx2c4/wireguard-tools.git"
+    [ipvsadm]="$BASE/linux/kernel/ipvsadm/ipvsadm.git"
+    [iproute2]="$BASE/linux/iproute2/iproute2.git"
+    [iproute2-next]="$BASE/linux/iproute2/iproute2-next.git"
+    [ethtool]="$BASE/linux/ethtool/ethtool.git"
+)
+
+log() { echo "==> $*"; }
+
+# Detect a remote's default branch after fetching it.
+# Falls back to 'master' if the remote does not advertise HEAD.
+default_branch() {
+    local remote="$1"
+    git remote set-head "$remote" --auto 2>/dev/null || true
+    if git symbolic-ref "refs/remotes/$remote/HEAD" &>/dev/null; then
+        git symbolic-ref "refs/remotes/$remote/HEAD" | sed "s|refs/remotes/$remote/||"
+    else
+        echo "master"
+    fi
+}
+
+log "Cloning torvalds/linux → $BARE"
+git clone --bare "$BASE/linux/kernel/git/torvalds/linux.git" "$BARE"
+cd "$BARE"
+
+for name in "${!KERNEL_REMOTES[@]}"; do
+    url="${KERNEL_REMOTES[$name]}"
+    log "[$name] Adding remote and fetching $url"
+    git remote add "$name" "$url"
+    git fetch "$name"
+    branch=$(default_branch "$name")
+    log "[$name] Creating worktree ../$name on branch $branch"
+    git worktree add -b "$name" "../$name" "$name/$branch"
+done
+
+for name in "${!USERSPACE_REPOS[@]}"; do
+    url="${USERSPACE_REPOS[$name]}"
+    log "[$name] Cloning $url → ../$name"
+    git clone "$url" "../$name"
+done
+
+log "Setup complete."
