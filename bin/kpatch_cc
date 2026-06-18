@@ -1,6 +1,34 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+usage() {
+    cat <<EOF
+Usage: kpatch_cc PATCH
+
+Output Cc: recipients (mailing lists) for a kernel patch or series.
+Must be run from the kernel tree root (requires ./scripts/get_maintainer.pl).
+
+Arguments:
+  PATCH     Path to a .patch file. If the file matches 0000-* (cover letter),
+            recipients are collected across all patches in the same directory.
+
+Options:
+  -h, --help    Show this help message and exit
+
+Examples:
+  kpatch_cc patches/v3-0000-cover-letter.patch
+  kpatch_cc patches/v3-0001-my-fix.patch
+
+Notes:
+  Outputs mailing lists only (excludes maintainers and reviewers).
+  Intended for use with git send-email --cc-cmd=kpatch_cc
+EOF
+}
+
+case "${1:-}" in
+    -h|--help) usage; exit 0 ;;
+esac
+
 opts=(--nogit-fallback --norolestats --nor)
 
 if [[ $(basename "$1") =~ 0000- ]]; then
