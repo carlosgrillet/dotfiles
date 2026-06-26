@@ -59,4 +59,22 @@ tmoperator() {
     "/github/nso-operator" \
     "CODE:nvim" \
 }
-tmoperator
+
+kerneldev() {
+    local tree=$1
+    local session_name="linux"
+    local folders=$(/usr/bin/ls /repos/kernel)
+
+    if ! grep -qx "${tree}" <<< "${folders}"; then
+        echo "${tree} is not a worktree"
+        return 1
+    fi
+
+    create_tmux_session "${session_name}" \
+        "/repos/kernel/${tree}" \
+        "CODE:nvim" \
+        "GIT:lazygit" \
+        "LENS:claude"
+
+    tmux a -t $session_name
+}
