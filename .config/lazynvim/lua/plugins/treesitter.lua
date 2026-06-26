@@ -1,7 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
     build = ":TSUpdate",
     opts = {
       highlight = {
@@ -52,16 +52,10 @@ return {
       }
     },
     config = function(_, opts)
-      local TS = require("nvim-treesitter.configs")
-      -- vim.api.nvim_create_autocmd("FileType", {
-      --   pattern = opts.ensure_installed,
-      --   callback = function() vim.treesitter.start() end,
-      -- })
-      TS.setup(opts)
+      require("nvim-treesitter").setup(opts)
     end,
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      branch = "master"
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
     },
   }
 }
