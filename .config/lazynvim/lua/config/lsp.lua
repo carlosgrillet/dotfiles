@@ -189,6 +189,13 @@ vim.lsp.config("terraformls", {
 })
 vim.lsp.enable("terraformls")
 
+vim.lsp.config("groovy-language-server", {
+    on_attach = on_attach,
+    filetypes = { "groovy" },
+    -- cmd = { "terraform-ls", "serve" }
+})
+vim.lsp.enable("groovy-language-server")
+
 -- Diagnostic symbols in the sign column (gutter)
 local signs = {
     [vim.diagnostic.severity.ERROR] = { icon = " ", hl = "Error" },

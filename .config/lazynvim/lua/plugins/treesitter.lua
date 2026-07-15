@@ -18,6 +18,7 @@ return {
         "cmake",
         "diff",
         "go",
+        "groovy",
         "hcl",
         "html",
         "json",

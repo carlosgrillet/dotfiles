@@ -2,7 +2,7 @@ return {
   {
     "mason-org/mason.nvim",
     cmd = "Mason",
-    keys = { 
+    keys = {
       { ";m", "<cmd>Mason<cr>" },
     },
     build = ":MasonUpdate",
@@ -23,6 +23,7 @@ return {
         "ruff",
         "terraformls",
         "rust_analyzer",
+        "groovyls",
       }
     }
   },
