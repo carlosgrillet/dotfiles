@@ -13,15 +13,22 @@ vim.api.nvim_create_autocmd("ModeChanged", {
     end,
 })
 
--- Set fold method
+-- Start Treesitter and set fold method
 vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
         if lang and pcall(vim.treesitter.language.inspect, lang) then
-            vim.opt.foldmethod = "expr"
-            vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            local ok = pcall(vim.treesitter.start)
+            if not ok then
+                vim.wo.foldmethod = "syntax"
+                return
+            end
+
+            vim.wo.foldmethod = "expr"
+            vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         else
-            vim.opt.foldmethod = "syntax"
+            vim.wo.foldmethod = "syntax"
         end
     end,
 })
