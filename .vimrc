@@ -1,8 +1,10 @@
 " Config
 scriptencoding utf-8
+
 let mapleader = "\\"
 let maplocalleader = "\\"
 let &fillchars = 'eob: '
+
 set autoindent
 set background=dark
 set backspace=start,eol,indent
@@ -18,6 +20,7 @@ set foldlevel=99
 set formatoptions+=r
 set gdefault
 set guicursor=n-v-c-i:block
+set hlsearch
 set ignorecase
 set incsearch
 set isfname-==
@@ -49,6 +52,7 @@ set updatetime=250
 set virtualedit=block
 set wildignore+=*/node_modules/*,*/.git/*
 set wildoptions=pum
+
 execute 'set undodir=' . fnameescape(expand('~/.vim/undo'))
 
 " Maps
