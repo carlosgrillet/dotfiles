@@ -27,7 +27,6 @@ set isfname-==
 set laststatus=2
 set mouse=
 set nobackup
-set nohlsearch
 set noswapfile
 set nowrap
 set number
