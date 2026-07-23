@@ -189,12 +189,13 @@ vim.lsp.config("terraformls", {
 })
 vim.lsp.enable("terraformls")
 
-vim.lsp.config("groovy-language-server", {
+vim.lsp.config("groovyls", {
     on_attach = on_attach,
+    cmd = { "groovy-language-server" },
     filetypes = { "groovy" },
-    -- cmd = { "terraform-ls", "serve" }
+    root_markers = { "settings.gradle", "build.gradle", ".git" },
 })
-vim.lsp.enable("groovy-language-server")
+vim.lsp.enable("groovyls")
 
 -- Diagnostic symbols in the sign column (gutter)
 local signs = {
