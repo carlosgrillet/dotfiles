@@ -23,7 +23,6 @@ return {
         "ruff",
         "terraformls",
         "rust_analyzer",
-        "groovyls",
       }
     }
   },
