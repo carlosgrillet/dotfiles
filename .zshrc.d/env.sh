@@ -7,6 +7,7 @@ export VISUAL=$EDITOR
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/home/carlos/.cargo/bin"
 export PYTHONDONTWRITEBYTECODE=1
 
 # Support colors in less
