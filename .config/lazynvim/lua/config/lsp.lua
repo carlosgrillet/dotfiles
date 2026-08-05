@@ -154,7 +154,7 @@ vim.lsp.enable("rust_analyzer")
 
 vim.lsp.config("clangd", {
     on_attach = on_attach,
-    filetypes = { "c", "cpp" },
+    filetypes = { "c", "cpp", "cuda" },
     root_dir = function(bufnr, cb)
         local current_file = vim.api.nvim_buf_get_name(bufnr)
         local parent_dir = vim.fn.fnamemodify(current_file, ':p:h')
