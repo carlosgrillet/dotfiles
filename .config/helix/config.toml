@@ -1,0 +1,18 @@
+theme = "solarized_osaka"
+
+[editor]
+cursorline = true
+end-of-line-diagnostics = "disable"
+line-number = "relative"
+mouse = false
+popup-border = "all"
+rulers = [80]
+bufferline = "multiple"
+color-modes = true
+
+[editor.file-picker]
+hidden = false
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+other-lines = "disable"

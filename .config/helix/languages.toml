@@ -1,0 +1,32 @@
+[language-server.gopls]
+command = "gopls"
+
+[language-server.gopls.config]
+usePlaceholders = true
+gofumpt = true
+staticcheck = true
+semanticTokens = true
+directoryFilters = [
+"-.git",
+"-vendor",
+"-.cache",
+]
+
+[language-server.gopls.config.analyses]
+unusedparams = true
+unusedvariable = true
+shadow = true
+nilness = true
+unusedwrite = true
+useany = true
+fieldalignment = true
+
+[language-server.gopls.config.hints]
+assignVariableTypes = true
+compositeLiteralFields = true
+compositeLiteralTypes = true
+constantValues = true
+functionTypeParameters = true
+parameterNames = true
+rangeVariableTypes = true
+
