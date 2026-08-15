@@ -27,7 +27,7 @@ string = { fg = "cyan" }
 "string.special.symbol" = { fg = "orange" }
 
 comment = { fg = "base01", modifiers = ["italic"] }
-"comment.line.documentation" = { fg = "cyan" }
+"comment.line.documentation" = { fg = "grey" }
 "comment.block.documentation" = { fg = "cyan" }
 "comment.unused" = { fg = "base00", modifiers = ["dim"] }
 
