@@ -1,18 +1,19 @@
 return {
   {
-    "mason-org/mason.nvim",
-    cmd = "Mason",
-    keys = {
-      { ";m", "<cmd>Mason<cr>" },
-    },
-    build = ":MasonUpdate",
-    opts = {}
-  },
-
-  {
     "mason-org/mason-lspconfig.nvim",
+    dependencies = {
+      {
+        "mason-org/mason.nvim",
+        keys = {
+          { ";m", "<cmd>Mason<cr>" },
+        },
+        build = ":MasonUpdate",
+        opts = {},
+      },
+      "neovim/nvim-lspconfig",
+    },
     opts = {
-      automatic_installation = true,
+      automatic_enable = false,
       ensure_installed = {
         "bashls",
         "clangd",
@@ -22,7 +23,6 @@ return {
         "pyright",
         "ruff",
         "terraformls",
-        "rust_analyzer",
       }
     }
   },

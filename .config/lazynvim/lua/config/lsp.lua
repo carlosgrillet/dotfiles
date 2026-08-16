@@ -1,13 +1,13 @@
-local on_attach = function(_, _)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "LSP Jump to definition" })
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "LSP See references" })
-    vim.keymap.set('n', 'gR', vim.lsp.buf.rename, { desc = "LSP Rename" })
-    vim.keymap.set('n', 'gi', vim.lsp.buf.hover, { desc = "LSP Hover" })
-    vim.keymap.set('n', 'gI', vim.diagnostic.open_float, { desc = "Show diagnostics" })
-    vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, { desc = "LSP Format" })
+local on_attach = function(_, bufnr)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP Jump to definition" })
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = bufnr, desc = "LSP See references" })
+    vim.keymap.set('n', 'gR', vim.lsp.buf.rename, { buffer = bufnr, desc = "LSP Rename" })
+    vim.keymap.set('n', 'gi', vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP Hover" })
+    vim.keymap.set('n', 'gI', vim.diagnostic.open_float, { buffer = bufnr, desc = "Show diagnostics" })
+    vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, { buffer = bufnr, desc = "LSP Format" })
     vim.keymap.set('n', '<leader>d', function()
         vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-    end, { silent = true, noremap = true })
+    end, { buffer = bufnr, silent = true, noremap = true })
 end
 
 vim.lsp.config("lua_ls", {
@@ -43,7 +43,6 @@ vim.lsp.config("gopls", {
     on_attach = on_attach,
     cmd = { "gopls" },
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_dir = vim.lsp.client.root_dir,
     settings = {
         gopls = {
             completeUnimported = true,
@@ -112,18 +111,17 @@ vim.lsp.enable("pyright")
 vim.lsp.config("rust_analyzer", {
     on_attach = on_attach,
     filetypes = { "rust" },
-    root_dir = vim.lsp.client.root_dir,
-    cmd = { "rust-analyzer" },
+    cmd = { vim.fn.expand("~/.cargo/bin/rust-analyzer") },
     settings = {
         ["rust-analyzer"] = {
             cargo = {
-                allFeatures = true,
-                loadOutDirsFromCheck = true,
+                features = "all",
             },
-            checkOnSave = {
+            checkOnSave = true,
+            check = {
                 command = "clippy",
                 extraArgs = { "--no-deps" },
-                allFeatures = true,
+                features = "all",
             },
             procMacro = {
                 enable = true,
