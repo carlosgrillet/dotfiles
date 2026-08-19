@@ -1,0 +1,96 @@
+# Version-control metadata
+.git/
+.hg/
+.jj/
+.svn/
+
+# OS and editor artifacts
+*.swo
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Common build outputs and dependency caches
+.cache/
+docs/_build/
+node_modules/
+out/
+site/
+tmp/
+vendor/
+
+# C, ASM, and CMake
+*.a
+*.d
+*.dll
+*.dylib
+*.elf
+*.exe
+*.gch
+*.hex
+*.map
+*.o
+*.obj
+*.pch
+*.so
+*.so.*
+CMakeCache.txt
+CMakeFiles/
+CTestTestfile.cmake
+_deps/
+cmake-build-*/
+cmake_install.cmake
+compile_commands.json
+
+# Rust
+**/mutants.out*/
+*.rs.bk
+rustc-ice-*.txt
+target/
+
+# Go
+*.coverprofile
+*.test
+coverage.*
+profile.cov
+
+# Groovy and Gradle
+!**/src/**/build/
+**/build/
+*.class
+.gradle/
+
+# Python
+*.egg-info/
+*.py[cod]
+.coverage
+.coverage.*
+.hypothesis/
+.mypy_cache/
+.nox/
+.pyre/
+.pytest_cache/
+.pytype/
+.ruff_cache/
+.tox/
+.venv/
+__pycache__/
+dist/
+htmlcov/
+venv/
+
+# Terraform and HCL
+*.tfplan
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+.terraform.tfstate.lock.info
+.terraform/
+crash.*.log
+crash.log
+tfplan
+
+# Lua
+luac.out
