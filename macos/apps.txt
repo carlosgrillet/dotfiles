@@ -1,0 +1,19 @@
+# Application	Bundle identifier
+1Password.app	com.1password.1password
+Bruno.app	com.usebruno.app
+Docker.app	com.docker.docker
+Emacs.app	org.gnu.Emacs
+Firefox.app	org.mozilla.firefox
+Ghostty.app	com.mitchellh.ghostty
+Google Chrome.app	com.google.Chrome
+iStat Menus.app	com.bjango.istatmenus
+iTerm.app	com.googlecode.iterm2
+Keynote.app	com.apple.iWork.Keynote
+logioptionsplus.app	com.logi.optionsplus
+OBS.app	com.obsproject.obs-studio
+Obsidian.app	md.obsidian
+OneDrive.app	com.microsoft.OneDrive
+Slack.app	com.tinyspeck.slackmacgap
+Spotify.app	com.spotify.client
+Telegram.app	ru.keepcoder.Telegram
+Wireshark.app	org.wireshark.Wireshark

@@ -1,0 +1,13 @@
+# GUI applications present on this Mac but not managed by Homebrew.
+# Company-managed and unavailable applications remain in apps.txt only.
+cask "1password"
+cask "cameracontroller"
+cask "docker-desktop"
+cask "google-chrome"
+cask "istat-menus"
+cask "logi-options+"
+cask "obs"
+cask "obsidian"
+cask "postman"
+cask "spotify"
+cask "wireshark"
