@@ -111,7 +111,7 @@ vim.lsp.enable("pyright")
 vim.lsp.config("rust_analyzer", {
     on_attach = on_attach,
     filetypes = { "rust" },
-    cmd = { vim.fn.expand("~/.cargo/bin/rust-analyzer") },
+    cmd = { "rust-analyzer" },
     settings = {
         ["rust-analyzer"] = {
             cargo = {
