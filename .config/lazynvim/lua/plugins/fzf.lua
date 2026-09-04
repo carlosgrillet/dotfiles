@@ -1,7 +1,7 @@
 -- fzf config here
 return {
-	{ 
-    "ibhagwan/fzf-lua", 
+	{
+    "ibhagwan/fzf-lua",
     opts = {
       files = {
         cwd_prompt= false,
@@ -66,6 +66,18 @@ return {
         ";b",
         function()
           require("fzf-lua").buffers()
+        end,
+      },
+      {
+        ";c",
+        function()
+          require("fzf-lua").changes()
+        end,
+      },
+      {
+        ";j",
+        function()
+          require("fzf-lua").jumps()
         end,
       },
       {
