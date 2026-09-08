@@ -149,6 +149,43 @@ return {
     }
   },
   {
+    "akinsho/bufferline.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = function()
+      local c = require("solarized-osaka.colors").setup()
+      -- Unselected tabs are transparent; only the current one gets a fill.
+      local sel = { bg = c.green500, fg = c.base04 }
+      local unsel = { bg = c.none, fg = c.base0 }
+
+      return {
+        options = {
+          style_preset = require("bufferline").style_preset.no_italic,
+          mode = "tabs",
+          separator_style = "slant",
+          indicator = { style = "none" },
+          always_show_bufferline = false,
+          tab_size = 0, -- shrink to contents rather than pad to a fixed width
+          max_name_length = 16,
+          show_buffer_close_icons = false,
+          show_close_icon = false,
+        },
+        highlights = {
+          fill = { bg = c.none, fg = c.base01 },
+          background = unsel,
+          buffer_selected = { bg = sel.bg, fg = sel.fg, bold = true },
+          -- Slant wedge: fg paints the gap side, bg the tab side.
+          separator = { bg = c.none, fg = c.bg },
+          separator_selected = { bg = sel.bg, fg = c.bg },
+          modified = unsel,
+          modified_selected = sel,
+          duplicate = { bg = c.none, fg = c.base01 },
+          duplicate_selected = sel,
+        },
+      }
+    end,
+  },
+  {
     "rcarriga/nvim-notify",
     opts = {
       max_width = function()

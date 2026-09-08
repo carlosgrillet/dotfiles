@@ -5,8 +5,8 @@ keymap("n", "x", '"_x')
 -- Split window
 keymap("n", "ss", ":new<Return>", { silent = true })
 keymap("n", "sv", ":vnew<Return>", { silent = true })
-keymap("n", "tt", ":new<Return>:term<Return>", { silent = true })
-keymap("n", "tv", ":vnew<Return>:term<Return>", { silent = true })
+keymap("n", "tT", ":new<Return>:term<Return>", { silent = true })
+keymap("n", "tV", ":vnew<Return>:term<Return>", { silent = true })
 -- Move window
 keymap("n", "<Space>", "<C-w>w")
 keymap("", "sh", "<C-w>h")
@@ -59,3 +59,8 @@ keymap('n', '<leader>pp', ':set spell!<CR>', { silent = true })
 keymap('n', '<leader>qq', ':enew<bar>bd #<CR>b', { silent = true })
 -- Change the content of a path
 keymap('n', 'ci/', 'F/lct/')
+-- Tabs
+keymap("n", "tt", ":tabnew<Return>", { silent = true })
+keymap("n", "tq", ":tabclose<Return>", { silent = true })
+keymap("n", "tp", ":tabprevious<Return>", { silent = true })
+keymap("n", "tn", ":tabnext<Return>", { silent = true })
