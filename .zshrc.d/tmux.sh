@@ -1,34 +1,35 @@
 create_tmux_session() {
-  if ! [[ -x /usr/bin/tmux ]]; then
-    echo "please install tmux"
-    return 0
-  fi
-  # Parameters: session_name, base_path, window_configs
-  local session_name="$1"
-  local base_path="$2"
-  shift 2
-  local window_configs=("$@")
+    if ! command -v tmux >/dev/null 2>&1; then
+        echo "please install tmux" >&2
+        return 1
+    fi
 
-  # Check if the session already exists
-  if tmux has-session -t "$session_name" 2>/dev/null; then
-    return 0
-  fi
+    # Parameters: session_name, base_path, window_configs
+    local session_name="$1"
+    local base_path="$2"
+    shift 2
+    local window_configs=("$@")
 
-  # Create a new detached session
-  tmux new-session -d -s "$session_name" -n "REPO" -c "$base_path"
+    # Check if the session already exists
+    if tmux has-session -t "$session_name" 2>/dev/null; then
+        return 0
+    fi
+
+    # Create a new detached session
+    tmux new-session -d -s "$session_name" -n "REPO" -c "$base_path"
 
   # Loop through window configurations and create windows
-  local index=1
-  for config in "${window_configs[@]}"; do
-    local window_name="${config%%:*}"
-    local command="${config#*:}"
+    local index=1
+    for config in "${window_configs[@]}"; do
+        local window_name="${config%%:*}"
+        local command="${config#*:}"
 
-    tmux new-window -t "$session_name" -n "$window_name" -c "$base_path"
-    tmux send-keys -t "$session_name:$((index + 1))" "$command" C-m
-    ((index++))
-  done
+        tmux new-window -t "$session_name" -n "$window_name" -c "$base_path"
+        tmux send-keys -t "$session_name:$((index + 1))" "$command" C-m
+        ((index++))
+    done
 
-  tmux select-window -t "$session_name:1"
+    tmux select-window -t "$session_name:1"
 }
 
 tm() {
@@ -61,40 +62,40 @@ tk() {
 # session_name
 
 kerneldev() {
-  local root="${KERNEL_ROOT:-/repos/kernel}"
-  local tree="$1"
+    local root="${KERNEL_ROOT:-/repos/kernel}"
+    local tree="$1"
 
-  if [[ -z "$tree" ]]; then
-      echo "Start a kernel development session in tmux" >&2
-      echo "Usage: kerneldev <tree>" >&2
-      echo "Available trees in ${root}:" >&2
-      for d in "$root"/*(N/); do echo "  ${d:t}" >&2; done
-      return 1
-  fi
+    if [[ -z "$tree" ]]; then
+        echo "Start a kernel development session in tmux" >&2
+        echo "Usage: kerneldev <tree>" >&2
+        echo "Available trees in ${root}:" >&2
+        for d in "$root"/*(N/); do echo "  ${d:t}" >&2; done
+        return 1
+    fi
 
-  if [[ "$tree" == */* || "$tree" == "." || "$tree" == ".." ]]; then
-      echo "kerneldev: '${tree}' must be a single directory name" >&2
-      return 1
-  fi
+    if [[ "$tree" == */* || "$tree" == "." || "$tree" == ".." ]]; then
+        echo "kerneldev: '${tree}' must be a single directory name" >&2
+        return 1
+    fi
 
-  local path="${root}/${tree}"
+    local path="${root}/${tree}"
 
-  if [[ ! -d "$path" ]]; then
-      echo "kerneldev: no tree named '${tree}' in ${root}" >&2
-      return 1
-  fi
+    if [[ ! -d "$path" ]]; then
+        echo "kerneldev: no tree named '${tree}' in ${root}" >&2
+        return 1
+    fi
 
-  local session="linux-${tree}"
+    local session="linux-${tree}"
 
-  create_tmux_session "$session" "$path" \
-      "CODE:nvim" \
-      "GIT:lazygit" \
-      "LENS:claude" || return 1
+    create_tmux_session "$session" "$path" \
+        "CODE:nvim" \
+        "GIT:lazygit" \
+        "LENS:claude" || return 1
 
-  if [[ -n "$TMUX" ]]; then
-      tmux switch-client -t "=${session}"
-  else
-      tmux attach-session -t "=${session}"
-  fi
+    if [[ -n "$TMUX" ]]; then
+        tmux switch-client -t "=${session}"
+    else
+        tmux attach-session -t "=${session}"
+    fi
 }
 
