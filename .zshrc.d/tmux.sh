@@ -61,20 +61,40 @@ tk() {
 # session_name
 
 kerneldev() {
-    local tree=$1
-    local session_name="linux"
-    local folders=$(/usr/bin/ls /repos/kernel)
+  local root="${KERNEL_ROOT:-/repos/kernel}"
+  local tree="$1"
 
-    if ! grep -qx "${tree}" <<< "${folders}"; then
-        echo "${tree} is not a worktree"
-        return 1
-    fi
+  if [[ -z "$tree" ]]; then
+      echo "Start a kernel development session in tmux" >&2
+      echo "Usage: kerneldev <tree>" >&2
+      echo "Available trees in ${root}:" >&2
+      for d in "$root"/*(N/); do echo "  ${d:t}" >&2; done
+      return 1
+  fi
 
-    create_tmux_session "${session_name}" \
-        "/repos/kernel/${tree}" \
-        "CODE:nvim" \
-        "GIT:lazygit" \
-        "LENS:claude"
+  if [[ "$tree" == */* || "$tree" == "." || "$tree" == ".." ]]; then
+      echo "kerneldev: '${tree}' must be a single directory name" >&2
+      return 1
+  fi
 
-    tmux a -t $session_name
+  local path="${root}/${tree}"
+
+  if [[ ! -d "$path" ]]; then
+      echo "kerneldev: no tree named '${tree}' in ${root}" >&2
+      return 1
+  fi
+
+  local session="linux-${tree}"
+
+  create_tmux_session "$session" "$path" \
+      "CODE:nvim" \
+      "GIT:lazygit" \
+      "LENS:claude" || return 1
+
+  if [[ -n "$TMUX" ]]; then
+      tmux switch-client -t "=${session}"
+  else
+      tmux attach-session -t "=${session}"
+  fi
 }
+
