@@ -23,6 +23,9 @@ return {
             on_highlights = function(hl, c)
                 hl.NoiceCmdlinePopupBorder = { fg = c.cyan300 }
                 hl.NoiceCmdlinePopup = { fg = "#c44a16" }
+                hl.TabLine = { bg = c.none }
+                hl.TabLineFill = { bg = c.none }
+                hl.TabLineSel = { bg = c.none }
             end,
         },
         config = function(_, opts)

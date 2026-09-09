@@ -174,7 +174,6 @@ return {
           fill = { bg = c.none, fg = c.base01 },
           background = unsel,
           buffer_selected = { bg = sel.bg, fg = sel.fg, bold = true },
-          -- Slant wedge: fg paints the gap side, bg the tab side.
           separator = { bg = c.none, fg = c.bg },
           separator_selected = { bg = sel.bg, fg = c.bg },
           modified = unsel,
