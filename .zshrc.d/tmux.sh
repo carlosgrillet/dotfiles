@@ -54,11 +54,11 @@ tk() {
 
 ### Tmux sessions
 
-tmoperator() {
-  create_tmux_session "operator" \
-    "/github/nso-operator" \
-    "CODE:nvim" \
-}
+# session_name() {
+#   create_tmux_session "session_name" "session_root_dir" \
+#     "window_name:window_command" \
+# }
+# session_name
 
 kerneldev() {
     local tree=$1
