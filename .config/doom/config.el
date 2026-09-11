@@ -40,6 +40,11 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
 
+;; Use four-column tabs and four-space indentation by default.
+(setq-default tab-width 4
+              standard-indent 4
+              indent-tabs-mode nil)
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
