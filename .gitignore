@@ -3,6 +3,11 @@
 .config/github-copilot/
 .config/ookla/
 .config/nvim/plugin/packer_compiled.lua
+.config/doom/.local/
+.config/doom/.cache/
+.config/doom/eln-cache/
+.config/doom/custom.el
+.config/doom/**/*.elc
 .DS_Store
 lazy-lock.json
 .config/aerc/accounts.conf
