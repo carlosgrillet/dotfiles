@@ -78,16 +78,16 @@ kerneldev() {
         return 1
     fi
 
-    local path="${root}/${tree}"
+    local tree_path="${root}/${tree}"
 
-    if [[ ! -d "$path" ]]; then
+    if [[ ! -d "$tree_path" ]]; then
         echo "kerneldev: no tree named '${tree}' in ${root}" >&2
         return 1
     fi
 
     local session="linux-${tree}"
 
-    create_tmux_session "$session" "$path" \
+    create_tmux_session "$session" "$tree_path" \
         "CODE:nvim" \
         "GIT:lazygit" \
         "LENS:claude" || return 1
