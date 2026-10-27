@@ -10,6 +10,11 @@ local on_attach = function(_, bufnr)
     end, { buffer = bufnr, silent = true, noremap = true })
 end
 
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { underline = true, undercurl = false })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { underline = true, undercurl = false })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { underline = true, undercurl = false })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { underline = true, undercurl = false })
+
 vim.lsp.config("lua_ls", {
     -- on Windows run:  scoop install lua-language-server
     on_attach = on_attach,
