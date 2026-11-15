@@ -3,7 +3,7 @@ alias ls='lsd -lh'
 alias play='asciinema play'
 alias rec='asciinema rec'
 alias tf='terraform'
-alias ness='nvim -R'
+alias ness='nvim -R +"set ft=man cc=78 nomod noma nu"'
 alias vim='nvim'
 alias k='kubecolor --kubecolor-theme=deuteranopia-dark'
 
